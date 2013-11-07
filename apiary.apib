@@ -1,0 +1,76 @@
+FORMAT: 1A
+HOST: http://www.google.com
+
+# Identity API
+Identity API is a service which manage users and its preferences.
+
+# Group User
+User resources
+
+## Authentication [/auth]
+### Subscribe to the service [POST]
++ Request (application/json)
+
+        {
+            "email" : "test@gmail.com",
+            "password" : "123",
+            "pseudo" : "toto",
+            "persmission" : "ROLE_USER",
+            "favoriteProviderForNotification" : "FACEBOOK"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "httpCode" : 200,
+            "result" : {
+                "id" : "1" ,
+                "email" : "test@gmail.com",
+                "password" : "NULL" ,
+                "pseudo" : "toto",
+                "permission":"ROLE_USER",
+                "favoriteProviderForNotification" : "FACEBOOK",
+                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+                "connectionKeyCreatedDate":1383658566439
+            }
+        }
+
+### Logout from the service [DELETE]
+
++ Response 200 (application/json)
+
+        {
+           "httpCode": 200,
+           "result": "Logout with success"
+        }
+
+
+## Login [/login]
+### Log to the service [GET]
++ Request (application/json)
+
+        { "title": "Buy cheese and bread for breakfast." }
+
++ Response 201 (application/json)
+
+        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+
+## Note [/notes/{id}]
+A single Note object with all its details
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
+
+### Retrieve a Note [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+
+            { "id": 2, "title": "Pick-up posters from post-office" }
+
+### Remove a Note [DELETE]
++ Response 204
