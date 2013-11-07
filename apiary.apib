@@ -45,15 +45,26 @@ User resources
         }
 
 
-## Login [/login]
+## Login [/login?username={username}&password={password}]
 ### Log to the service [GET]
-+ Request (application/json)
++ Parameters
+    + username (required, string, `dummy@dummy.com`) ... String `username` of the user which want to login.
+    + password (required, string, `secret`) ... String `paswword` of the user which want to login.
+    
++ Response 200 (application/json)
 
-        { "title": "Buy cheese and bread for breakfast." }
-
-+ Response 201 (application/json)
-
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+        {
+            "httpCode" : 200,
+            "result" : {
+                "id" : "1" ,
+               "email" : "test@gmail.com",
+                "pseudo" : "toto",
+                "permission":"ROLE_USER",
+                "favoriteProviderForNotification" : "FACEBOOK",
+                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+                "connectionKeyCreatedDate":1383658566439
+            }
+        }
 
 ## Note [/notes/{id}]
 A single Note object with all its details
