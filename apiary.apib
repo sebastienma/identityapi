@@ -4,8 +4,8 @@ HOST: http://www.google.com
 # Identity API
 Identity API is a service which manage users and its preferences.
 
-# Group User
-User resources
+# Group Authentication
+Authentication resources
 
 ## Authentication [/auth]
 ### Subscribe to the service [POST]
@@ -46,10 +46,11 @@ User resources
 
 
 ## Login [/login?username={username}&password={password}]
-### Log to the service [GET]
 + Parameters
     + username (required, string, `dummy@dummy.com`) ... String `username` of the user which want to login.
     + password (required, string, `secret`) ... String `paswword` of the user which want to login.
+
+### Log to the service [GET]
     
 + Response 200 (application/json)
 
@@ -66,22 +67,87 @@ User resources
             }
         }
 
-## Note [/notes/{id}]
-A single Note object with all its details
 
+# Group User
+User resources
+
+## Single User [/user/{user_id}]
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
+    + user_id (required, number, `1`) ... Number `id` of the user.
 
-### Retrieve a Note [GET]
+### Retreive single user [GET]
+
 + Response 200 (application/json)
 
-    + Header
+        {
+           "httpCode": 200,
+           "errorResponse": null,
+           "result":
+           {
+               "id": 1,
+               "email": "test@gmail.com",
+               "password": null,
+               "pseudo": "test",
+               "permission": "ROLE_USER",
+               "favoriteProviderForNotification" : "FACEBOOK",
+               "connectionKey": null,
+               "connectionKeyCreatedDate": null
+           }
+        }
 
-            X-My-Header: The Value
+### Update single user [PUT]
 
-    + Body
++ Response 200 (application/json)
 
-            { "id": 2, "title": "Pick-up posters from post-office" }
+        {
+           "httpCode": 200,
+           "result" : {
+                "id" : "1",
+                "email" : "test@gmail.com",
+                "password" : "NULL" ,
+                "pseudo" : "totor",
+                "permission":"ROLE_USER",
+                "favoriteProviderForNotification" : "TWITTER",
+                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+                "connectionKeyCreatedDate":1383658566439
+            }
+        }
 
-### Remove a Note [DELETE]
-+ Response 204
+### Delete single user [DELETE]
+
++ Response 200 (application/json)
+
+        {
+            "httpCode": 200,
+            "result" : "User Deleted"
+        }
+
+
+## User List [/user/list]
+
+### Retreive user list [GET]
+
++ Response 200 (application/json)
+
+        {
+           "httpCode": 200,
+           "result" : [{
+                "id" : "1",
+                "email" : "test@gmail.com",
+                "password" : "NULL" ,
+                "pseudo" : "totor",
+                "permission":"ROLE_USER",
+                "favoriteProviderForNotification" : "TWITTER",
+                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+                "connectionKeyCreatedDate":1383658566439
+           }, {
+                "id" : "2",
+                "email" : "test2@gmail.com",
+                "password" : "NULL" ,
+                "pseudo" : "totor2",
+                "permission":"ROLE_USER",
+                "favoriteProviderForNotification" : "TWITTER",
+                "connectionKey":"zefVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+                "connectionKeyCreatedDate":1383658566437
+           }]
+        }
