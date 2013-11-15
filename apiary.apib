@@ -63,6 +63,23 @@ User is automatically created if not exists.
     + username (required, string, `dummy@dummy.com`) ... String `username` of the user which want to login.
     + password (required, string, `secret`) ... String `paswword` of the user which want to login.
 
+### Log to the service [GET]
+    
++ Response 200 (application/json)
+
+        {
+            "httpCode" : 200,
+            "result" : {
+                "id" : "1" ,
+               "email" : "test@gmail.com",
+                "pseudo" : "toto",
+                "permission":"ROLE_USER",
+                "favoriteProviderForNotification" : "FACEBOOK",
+                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+                "connectionKeyCreatedDate":1383658566439
+            }
+        }
+
 ## Authentication [/auth/socialapicallback?accessToken={accessToken}&userId={userId}]
 + Parameters
     + accessToken (required, string, `my-wonderfulltoken`) ... `accessToken` of the user which want to login.
@@ -88,24 +105,6 @@ This verb is only used by socialAPI. Do not use. Just for internal use.
             }
         }
         
-### Log to the service [GET]
-    
-+ Response 200 (application/json)
-
-        {
-            "httpCode" : 200,
-            "result" : {
-                "id" : "1" ,
-               "email" : "test@gmail.com",
-                "pseudo" : "toto",
-                "permission":"ROLE_USER",
-                "favoriteProviderForNotification" : "FACEBOOK",
-                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-                "connectionKeyCreatedDate":1383658566439
-            }
-        }
-
-
 # Group User
 User resources
 
