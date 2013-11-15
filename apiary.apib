@@ -24,7 +24,8 @@ Authentication resources
     + email (required, string, `dummy@dummy.com`) ... String `email` of the user which want to login.
     + password (required, string, `secret`) ... String `paswword` of the user which want to login.
     
-### Subscribe to the service [POST]
+### Subscribe and connect to the service [POST]
+This verb will throw an error if nickname already exist.
 
 + Response 200 (application/json)
 
@@ -32,6 +33,30 @@ Authentication resources
             "httpCode" : 200,
             "result" : {
                 "nickname": "foobar",
+                "authorities": "ROLE_USER",
+                "credentialList": [{
+                    identity: "dummy@dummy.com",
+                    secret: "password",
+                    domain: "internal"
+                    }],
+                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+                "connectionKeyCreatedDate":1383658566439
+            }
+        }
+
+## Authentication [/auth/bydeviceid/{deviceid}]
++ Parameters
+    + deviceid (required, string, `my-dummy-id`) ... String `deviceid` of the device which want to login.
+
+### Connection with a device identifier [POST]
+User is automatically created if not exists.
+
++ Response 200 (application/json)
+
+        {
+            "httpCode" : 200,
+            "result" : {
+                "nickname": "my-dummy-id",
                 "authorities": "ROLE_USER",
                 "credentialList": [{
                     identity: "dummy@dummy.com",
