@@ -44,6 +44,39 @@ Authentication resources
            "result": "Logout with success"
         }
 
+## Authentication [/auth/subscribe/{nickname}/{email}/{password}]
++ Parameters
+    + nickname (required, string, `foobar`) ... String `foobar` of the user which want to login.
+    + username (required, string, `dummy@dummy.com`) ... String `username` of the user which want to login.
+    + password (required, string, `secret`) ... String `paswword` of the user which want to login.
+    
+### Subscribe to the service [POST]
++ Request (application/json)
+
+        {
+            "email" : "test@gmail.com",
+            "password" : "123",
+            "pseudo" : "toto",
+            "persmission" : "ROLE_USER",
+            "favoriteProviderForNotification" : "FACEBOOK"
+        }
+
++ Response 200 (application/json)
+
+        {
+            "httpCode" : 200,
+            "result" : {
+                "id" : "1" ,
+                "email" : "test@gmail.com",
+                "password" : "NULL" ,
+                "pseudo" : "toto",
+                "permission":"ROLE_USER",
+                "favoriteProviderForNotification" : "FACEBOOK",
+                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+                "connectionKeyCreatedDate":1383658566439
+            }
+        }
+
 
 ## Login [/login?username={username}&password={password}]
 + Parameters
