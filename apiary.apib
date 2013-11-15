@@ -8,32 +8,6 @@ Identity API is a service which manage users and its preferences.
 Authentication resources
 
 ## Authentication [/auth]
-### Subscribe to the service [POST]
-+ Request (application/json)
-
-        {
-            "email" : "test@gmail.com",
-            "password" : "123",
-            "pseudo" : "toto",
-            "persmission" : "ROLE_USER",
-            "favoriteProviderForNotification" : "FACEBOOK"
-        }
-
-+ Response 200 (application/json)
-
-        {
-            "httpCode" : 200,
-            "result" : {
-                "id" : "1" ,
-                "email" : "test@gmail.com",
-                "password" : "NULL" ,
-                "pseudo" : "toto",
-                "permission":"ROLE_USER",
-                "favoriteProviderForNotification" : "FACEBOOK",
-                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-                "connectionKeyCreatedDate":1383658566439
-            }
-        }
 
 ### Logout from the service [DELETE]
 
