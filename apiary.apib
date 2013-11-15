@@ -7,22 +7,11 @@ Identity API is a service which manage users and its preferences.
 # Group Authentication
 Authentication resources
 
-## Authentication [/auth]
-
-### Logout from the service [DELETE]
-
-+ Response 200 (application/json)
-
-        {
-           "httpCode": 200,
-           "result": "Logout with success"
-        }
-
 ## Authentication [/auth/subscribe/{nickname}/{email}/{password}]
 + Parameters
-    + nickname (required, string, `foobar`) ... String `foobar` of the user which want to login.
-    + email (required, string, `dummy@dummy.com`) ... String `email` of the user which want to login.
-    + password (required, string, `secret`) ... String `paswword` of the user which want to login.
+    + nickname (required, string, `foobar`) ... `Nickname` of the user which want to login.
+    + email (required, string, `dummy@dummy.com`) ... `Email` of the user which want to login.
+    + password (required, string, `secret`) ... `Password` of the user which want to login.
     
 ### Subscribe and connect to the service [POST]
 This verb will throw an error if nickname already exist.
@@ -74,6 +63,31 @@ User is automatically created if not exists.
     + username (required, string, `dummy@dummy.com`) ... String `username` of the user which want to login.
     + password (required, string, `secret`) ... String `paswword` of the user which want to login.
 
+## Authentication [/auth/socialapicallback?accessToken={accessToken}&userId={userId}]
++ Parameters
+    + accessToken (required, string, `my-wonderfulltoken`) ... `accessToken` of the user which want to login.
+    + userId (required, int, `1`) ... `userId` of the user which want to login.
+
+### Authenticate with socialAPI [GET]
+This verb is only used by socialAPI. Do not use. Just for internal use.
+
++ Response 200 (application/json)
+
+        {
+            "httpCode" : 200,
+            "result" : {
+                "nickname": "foobar",
+                "authorities": "ROLE_USER",
+                "credentialList": [{
+                    identity: "dummy@dummy.com",
+                    secret: "password",
+                    domain: "internal"
+                    }],
+                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+                "connectionKeyCreatedDate":1383658566439
+            }
+        }
+        
 ### Log to the service [GET]
     
 + Response 200 (application/json)
