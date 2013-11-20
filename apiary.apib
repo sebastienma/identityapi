@@ -19,18 +19,15 @@ This verb will throw an error if nickname already exist.
 + Response 200 (application/json)
 
         {
-            "httpCode" : 200,
-            "result" : {
-                "nickname": "foobar",
-                "authorities": "ROLE_USER",
-                "credentialList": [{
-                    identity: "dummy@dummy.com",
-                    secret: "password",
-                    domain: "internal"
-                    }],
-                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-                "connectionKeyCreatedDate":1383658566439
-            }
+            "nickname": "foobar",
+            "authorities": "ROLE_USER",
+            "credentialList": [{
+               identity: "dummy@dummy.com",
+               secret: "password",
+               domain: "internal"
+            }],
+            "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+            "connectionKeyCreatedDate":1383658566439
         }
 
 ## Authentication [/auth/bydeviceid/{deviceid}]
