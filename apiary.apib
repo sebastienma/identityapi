@@ -40,18 +40,15 @@ User is automatically created if not exists.
 + Response 200 (application/json)
 
         {
-            "httpCode" : 200,
-            "result" : {
-                "nickname": "my-dummy-id",
-                "authorities": "ROLE_USER",
-                "credentialList": [{
-                    identity: "dummy@dummy.com",
-                    secret: "password",
-                    domain: "internal"
-                    }],
-                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-                "connectionKeyCreatedDate":1383658566439
-            }
+            "nickname": "my-dummy-id",
+            "authorities": "ROLE_USER",
+            "credentialList": [{
+                identity: "dummy@dummy.com",
+                secret: "password",
+                domain: "internal"
+            }],
+            "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+            "connectionKeyCreatedDate":1383658566439
         }
 
 
@@ -65,16 +62,13 @@ User is automatically created if not exists.
 + Response 200 (application/json)
 
         {
-            "httpCode" : 200,
-            "result" : {
-                "id" : "1" ,
-               "email" : "test@gmail.com",
-                "pseudo" : "toto",
-                "permission":"ROLE_USER",
-                "favoriteProviderForNotification" : "FACEBOOK",
-                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-                "connectionKeyCreatedDate":1383658566439
-            }
+            "id" : "1" ,
+            "email" : "test@gmail.com",
+            "pseudo" : "toto",
+            "permission":"ROLE_USER",
+            "favoriteProviderForNotification" : "FACEBOOK",
+            "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+            "connectionKeyCreatedDate":1383658566439
         }
 
 ## Authentication [/auth/socialapicallback?accessToken={accessToken}&userId={userId}]
@@ -88,18 +82,15 @@ This verb is only used by socialAPI. Do not use. Just for internal use.
 + Response 200 (application/json)
 
         {
-            "httpCode" : 200,
-            "result" : {
-                "nickname": "foobar",
-                "authorities": "ROLE_USER",
-                "credentialList": [{
-                    identity: "dummy@dummy.com",
-                    secret: "password",
-                    domain: "internal"
-                    }],
-                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-                "connectionKeyCreatedDate":1383658566439
-            }
+            "nickname": "foobar",
+            "authorities": "ROLE_USER",
+            "credentialList": [{
+                identity: "dummy@dummy.com",
+                secret: "password",
+                domain: "internal"
+            }],
+            "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+            "connectionKeyCreatedDate":1383658566439
         }
         
 # Group User
@@ -114,19 +105,14 @@ User resources
 + Response 200 (application/json)
 
         {
-           "httpCode": 200,
-           "errorResponse": null,
-           "result":
-           {
-               "id": 1,
-               "email": "test@gmail.com",
-               "password": null,
-               "pseudo": "test",
-               "permission": "ROLE_USER",
-               "favoriteProviderForNotification" : "FACEBOOK",
-               "connectionKey": null,
-               "connectionKeyCreatedDate": null
-           }
+            "id": 1,
+            "email": "test@gmail.com",
+            "password": null,
+            "pseudo": "test",
+            "permission": "ROLE_USER",
+            "favoriteProviderForNotification" : "FACEBOOK",
+            "connectionKey": null,
+            "connectionKeyCreatedDate": null
         }
 
 ### Update single user [PUT]
@@ -134,17 +120,14 @@ User resources
 + Response 200 (application/json)
 
         {
-           "httpCode": 200,
-           "result" : {
-                "id" : "1",
-                "email" : "test@gmail.com",
-                "password" : "NULL" ,
-                "pseudo" : "totor",
-                "permission":"ROLE_USER",
-                "favoriteProviderForNotification" : "TWITTER",
-                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-                "connectionKeyCreatedDate":1383658566439
-            }
+            "id" : "1",
+            "email" : "test@gmail.com",
+            "password" : "NULL" ,
+            "pseudo" : "totor",
+            "permission":"ROLE_USER",
+            "favoriteProviderForNotification" : "TWITTER",
+            "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+            "connectionKeyCreatedDate":1383658566439
         }
 
 ### Delete single user [DELETE]
@@ -152,7 +135,6 @@ User resources
 + Response 200 (application/json)
 
         {
-            "httpCode": 200,
             "result" : "User Deleted"
         }
 
@@ -163,25 +145,22 @@ User resources
 
 + Response 200 (application/json)
 
-        {
-           "httpCode": 200,
-           "result" : [{
-                "id" : "1",
-                "email" : "test@gmail.com",
-                "password" : "NULL" ,
-                "pseudo" : "totor",
-                "permission":"ROLE_USER",
-                "favoriteProviderForNotification" : "TWITTER",
-                "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-                "connectionKeyCreatedDate":1383658566439
-           }, {
-                "id" : "2",
-                "email" : "test2@gmail.com",
-                "password" : "NULL" ,
-                "pseudo" : "totor2",
-                "permission":"ROLE_USER",
-                "favoriteProviderForNotification" : "TWITTER",
-                "connectionKey":"zefVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-                "connectionKeyCreatedDate":1383658566437
-           }]
-        }
+        [{
+            "id" : "1",
+            "email" : "test@gmail.com",
+            "password" : "NULL" ,
+            "pseudo" : "totor",
+            "permission":"ROLE_USER",
+            "favoriteProviderForNotification" : "TWITTER",
+            "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+            "connectionKeyCreatedDate":1383658566439
+        }, {
+            "id" : "2",
+            "email" : "test2@gmail.com",
+            "password" : "NULL" ,
+            "pseudo" : "totor2",
+            "permission":"ROLE_USER",
+            "favoriteProviderForNotification" : "TWITTER",
+            "connectionKey":"zefVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+            "connectionKeyCreatedDate":1383658566437
+        }]
