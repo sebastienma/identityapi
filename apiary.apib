@@ -96,7 +96,35 @@ This verb is only used by socialAPI. Do not use. Just for internal use.
 # Group User
 User resources
 
-## Single User [/user/{user_id}]
+## Single User by nickname [/user/bynickname/{nickname}/]
++ Parameters
+    + nickname (required, number, `1`) ... Number `id` of the user.
+
+### Retrieve single user by his nickname [GET]
+
++ Response 200 (application/json)
+
+        {
+            id: 1,
+            nickname: "testaccount",
+            authorityRoleList: [
+                "ROLE_USER"
+            ],
+            credentialList: [
+                {
+                    identity: "test@gmail.com",
+                    domain: "internal",
+                    connected: true
+                },
+                {
+                    identity: "mydummyguididentity",
+                    domain: "device",
+                    connected: false
+                }
+            ]
+        }
+        
+## Single User [/user/{user_id}/]
 + Parameters
     + user_id (required, number, `1`) ... Number `id` of the user.
 
@@ -105,29 +133,23 @@ User resources
 + Response 200 (application/json)
 
         {
-            "id": 1,
-            "email": "test@gmail.com",
-            "password": null,
-            "pseudo": "test",
-            "permission": "ROLE_USER",
-            "favoriteProviderForNotification" : "FACEBOOK",
-            "connectionKey": null,
-            "connectionKeyCreatedDate": null
-        }
-
-### Update single user [PUT]
-
-+ Response 200 (application/json)
-
-        {
-            "id" : "1",
-            "email" : "test@gmail.com",
-            "password" : "NULL" ,
-            "pseudo" : "totor",
-            "permission":"ROLE_USER",
-            "favoriteProviderForNotification" : "TWITTER",
-            "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-            "connectionKeyCreatedDate":1383658566439
+            id: 1,
+            nickname: "testaccount",
+            authorityRoleList: [
+                "ROLE_USER"
+            ],
+            credentialList: [
+                {
+                    identity: "test@gmail.com",
+                    domain: "internal",
+                    connected: true
+                },
+                {
+                    identity: "mydummyguididentity",
+                    domain: "device",
+                    connected: false
+                }
+            ]
         }
 
 ### Delete single user [DELETE]
