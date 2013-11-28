@@ -52,6 +52,16 @@ User is automatically created if not exists.
         }
 
 
+## Login [/auth/logout]
+
+### Log to the service [GET]
+Needs ROE_USER
+    
++ Response 200 (application/json)
+
+        "Logout with success"
+        
+        
 ## Login [/login?username={username}&password={password}]
 + Parameters
     + username (required, string, `dummy@dummy.com`) ... String `username` of the user which want to login.
