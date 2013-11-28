@@ -143,6 +143,12 @@ Needs ROLE_USER
 Needs ROLE_ADMIN
 This verb will throw an error if nickname already exist.
 
++ Request (application/json)
+
+    + Body
+    
+            {"nickame": "foobar", "identity": "dummy@dummy.com", "secret": "mysecretpassword"}
+            
 + Response 200 (application/json)
 
         {
