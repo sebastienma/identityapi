@@ -98,12 +98,11 @@ User resources
 
 ## Single User by nickname [/user/bynickname/{nickname}/]
 
-    + Needs ROLE_USER
-    
 + Parameters
     + nickname (required, number, `1`) ... Number `id` of the user.
 
 ### Retrieve single user by his nickname [GET]
+Needs ROLE_USER
 
 + Response 200 (application/json)
 
@@ -132,6 +131,7 @@ User resources
     + user_id (required, number, `1`) ... Number `id` of the user.
 
 ### Retreive single user [GET]
+Needs ROLE_ADMIN
 
 + Response 200 (application/json)
 
@@ -156,6 +156,7 @@ User resources
         }
 
 ### Delete single user [DELETE]
+Needs ROLE_ADMIN
 
 + Response 200 (application/json)
 
@@ -167,25 +168,42 @@ User resources
 ## User List [/user/list]
 
 ### Retreive user list [GET]
+Needs ROLE_ADMIN
 
 + Response 200 (application/json)
 
-        [{
-            "id" : "1",
-            "email" : "test@gmail.com",
-            "password" : "NULL" ,
-            "pseudo" : "totor",
-            "permission":"ROLE_USER",
-            "favoriteProviderForNotification" : "TWITTER",
-            "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-            "connectionKeyCreatedDate":1383658566439
-        }, {
-            "id" : "2",
-            "email" : "test2@gmail.com",
-            "password" : "NULL" ,
-            "pseudo" : "totor2",
-            "permission":"ROLE_USER",
-            "favoriteProviderForNotification" : "TWITTER",
-            "connectionKey":"zefVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-            "connectionKeyCreatedDate":1383658566437
-        }]
+        [
+            {
+                id: 1,
+                nickname: "testaccount",
+                authorityRoleList: [
+                    "ROLE_USER"
+                ],
+                credentialList: [
+                    {
+                        identity: "test@gmail.com",
+                        domain: "internal",
+                        connected: true
+                    },
+                    {
+                        identity: "mydummyguididentity",
+                        domain: "device",
+                        connected: false
+                    }
+                ]
+            },
+            {
+                id: 2,
+                nickname: "fdsfds",
+                authorityRoleList: [
+                    "ROLE_USER"
+                ],
+                credentialList: [
+                    {
+                        identity: "fdsfsd@fdsfds.fds",
+                        domain: "internal",
+                        connected: true
+                    }
+                ]
+            }
+        ]
