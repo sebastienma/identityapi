@@ -136,6 +136,27 @@ Needs ROLE_USER
             ]
         }
         
+
+## Single user [/user]
+
+### Subscribe and connect to the service [POST]
+Needs ROLE_ADMIN
+This verb will throw an error if nickname already exist.
+
++ Response 200 (application/json)
+
+        {
+            "nickname": "foobar",
+            "authorities": [
+                "ROLE_USER"],
+            "credentialList": [{
+               identity: "dummy@dummy.com",
+               domain: "internal"
+            }],
+            "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+            "connectionKeyCreatedDate":1383658566439
+        }
+
 ## Single User [/user/{user_id}/]
 + Parameters
     + user_id (required, number, `1`) ... Number `id` of the user.
