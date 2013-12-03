@@ -20,7 +20,7 @@ This verb will throw an error if nickname already exist.
 
         {
             "nickname": "foobar",
-            "authorities": "ROLE_USER",
+            "authorityList": "ROLE_USER",
             "credentialList": [{
                identity: "dummy@dummy.com",
                secret: "password",
@@ -41,7 +41,7 @@ User is automatically created if not exists.
 
         {
             "nickname": "my-dummy-id",
-            "authorities": "ROLE_USER",
+            "authorityList": "ROLE_USER",
             "credentialList": [{
                 identity: "dummy@dummy.com",
                 secret: "password",
@@ -93,7 +93,7 @@ This verb is only used by socialAPI. Do not use. Just for internal use.
 
         {
             "nickname": "foobar",
-            "authorities": "ROLE_USER",
+            "authorityList": "ROLE_USER",
             "credentialList": [{
                 identity: "dummy@dummy.com",
                 secret: "password",
@@ -109,7 +109,7 @@ User resources
 ## Single User by nickname [/user/bynickname/{nickname}/]
 
 + Parameters
-    + nickname (required, number, `1`) ... Number `id` of the user.
+    + nickname (required, string, `my-nickname`) ... String `nickname` of the user.
 
 ### Retrieve single user by his nickname [GET]
 Needs ROLE_USER
@@ -159,7 +159,7 @@ This verb will throw an error if nickname already exist.
 
         {
             "nickname": "foobar",
-            "authorities": [
+            "authorityList": [
                 "ROLE_USER"],
             "credentialList": [{
                identity: "dummy@dummy.com",
@@ -212,6 +212,25 @@ Needs ROLE_ADMIN
         {
             "result": "Role deleted"
         }
+        
+
+
+## User credential [/user/{user_id}/credential?domain={domain}&identity={identity}]
++ Parameters
+    + user_id (required, number, `1`) ... Number `id` of the user.
+    + domain (required, string, `internal`) ... Domain of the credential
+    + identity (required, string, `my-identity`) ... Identity of the credential
+
+### Delete the credential [DELETE]
+
+Needs ROLE_ADMIN
+
++ Response 200 (application/json)
+
+        {
+            "result": "credential deleted"
+        }
+
         
 ## Single User [/user/{user_id}/]
 + Parameters
