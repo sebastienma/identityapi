@@ -175,11 +175,17 @@ This verb will throw an error if nickname already exist.
     + user_id (required, number, `1`) ... Number `id` of the user.
     + role_id (required, string, `ROLE_USER`) ... Role of the user.
 
-### Add the role [POST]
+### Set the role for user [POST]
 
-No error, even if user has already the role
+Set the role for the user.
 
-Needs ROLE_ADMIN
+If ROLE_ADMIN is added, ROLE_USER is added too.
+
+If a lower role is set, all higher roles are deleted.
+
+If user has already at the role {role_id} no error is thrown.
+
+Needs ROLE_ADMIN to use this verb.
 
 + Response 200 (application/json)
 
@@ -202,17 +208,6 @@ Needs ROLE_ADMIN
                 }
             ]
         }
-
-### Delete the role [DELETE]
-
-Needs ROLE_ADMIN
-
-+ Response 200 (application/json)
-
-        {
-            "result": "Role deleted"
-        }
-        
 
 
 ## User credential [/user/{user_id}/credential?domain={domain}&identity={identity}]
