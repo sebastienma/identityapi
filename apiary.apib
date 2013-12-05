@@ -169,6 +169,63 @@ This verb will throw an error if nickname already exist.
             "connectionKeyCreatedDate":1383658566439
         }
 
+    
+## Single User [/user/{user_id}/]
++ Parameters
+    + user_id (required, number, `1`) ... Number `id` of the user.
+
+### Retreive single user [GET]
+Needs ROLE_ADMIN
+
++ Response 200 (application/json)
+
+        {
+            id: 1,
+            nickname: "testaccount",
+            authorityList: [
+                "ROLE_USER"
+            ],
+            credentialList: [
+                {
+                    identity: "test@gmail.com",
+                    domain: "internal",
+                    connected: true
+                },
+                {
+                    identity: "mydummyguididentity",
+                    domain: "device",
+                    connected: false
+                }
+            ]
+        }
+
+### Update a user [PUT]
+Needs ROLE_ADMIN
+
++ Request (application/json)
+
+    + Body
+    
+            {
+                "id": "1"
+                "nickname": "foobar",
+            }
+            
++ Response 200 (application/json)
+
+        {
+            "result" : "User modified"
+        }
+        
+### Delete single user [DELETE]
+Needs ROLE_ADMIN
+
++ Response 200 (application/json)
+
+        {
+            "result" : "User Deleted"
+        }
+
 
 ## User authority [/user/{user_id}/authority/{role_id}]
 + Parameters
@@ -207,46 +264,7 @@ Needs ROLE_ADMIN
         {
             "result": "credential deleted"
         }
-
         
-## Single User [/user/{user_id}/]
-+ Parameters
-    + user_id (required, number, `1`) ... Number `id` of the user.
-
-### Retreive single user [GET]
-Needs ROLE_ADMIN
-
-+ Response 200 (application/json)
-
-        {
-            id: 1,
-            nickname: "testaccount",
-            authorityList: [
-                "ROLE_USER"
-            ],
-            credentialList: [
-                {
-                    identity: "test@gmail.com",
-                    domain: "internal",
-                    connected: true
-                },
-                {
-                    identity: "mydummyguididentity",
-                    domain: "device",
-                    connected: false
-                }
-            ]
-        }
-
-### Delete single user [DELETE]
-Needs ROLE_ADMIN
-
-+ Response 200 (application/json)
-
-        {
-            "result" : "User Deleted"
-        }
-
 
 ## User List [/user/list]
 
