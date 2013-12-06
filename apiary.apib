@@ -248,8 +248,44 @@ Needs ROLE_ADMIN to use this verb.
             "result": "Authority changed"
         }
 
+## User internal credential [/user/{user_id}/credential/internal]
+
++ Parameters
+
+    + user_id (required, number, `1`) ... Number `id` of the user.
+    
+### Post internal credential [POST]
+
++ Add internal credential to this user
+
++ Request (application/json)
+
+    + Body
+    
+            {
+                "identity": "admin"
+                "secret": "123"
+            }
+            
++ Response 200 (application/json)
+
+            {
+                id: 1,
+                nickname: "admin",
+                authorityList: [
+                    "ROLE_ADMIN"
+                ],
+                credentialList: [
+                    {
+                        identity: "admin",
+                        domain: "internal",
+                        connected: false
+                    }
+                ]
+            }
 
 ## User credential [/user/{user_id}/credential?domain={domain}&identity={identity}]
+
 + Parameters
     + user_id (required, number, `1`) ... Number `id` of the user.
     + domain (required, string, `internal`) ... Domain of the credential
