@@ -114,7 +114,7 @@ User resources
 ### Retrieve single user by his nickname [GET]
 Needs ROLE_USER
 
-Also return users that nickname begin with 'nickname'.
+Search is strict
 
 + Response 200 (application/json)
 
@@ -137,7 +137,53 @@ Also return users that nickname begin with 'nickname'.
                 }
             ]
         }
+       
+## All users by nickname [/user/bynickname/{nickname}/list]
+
++ Parameters
+    + nickname (required, string, `my-nickname`) ... String `nickname` of the user.
+
+### Retrieve single user by his nickname [GET]
+Needs ROLE_USER
+
+Also return users that nickname begin with 'nickname'.
+
++ Response 200 (application/json)
+
+        [ {
+            id: 1,
+            nickname: "testaccount",
+            authorityList: [
+                "ROLE_USER"
+            ],
+            credentialList: [
+                {
+                    identity: "test@gmail.com",
+                    domain: "internal",
+                    connected: true
+                },
+                {
+                    identity: "mydummyguididentity",
+                    domain: "device",
+                    connected: false
+                }
+            ]
+        },
         
+        {
+            id: 2,
+            nickname: "testaccountdummy",
+            authorityList: [
+                "ROLE_USER"
+            ],
+            credentialList: [
+                {
+                    identity: "identity",
+                    domain: "device",
+                    connected: false
+                }
+            ]
+        }}
 
 ## Single user [/user]
 
