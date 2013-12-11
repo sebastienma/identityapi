@@ -138,12 +138,13 @@ Search is strict
             ]
         }
        
-## All users by nickname [/user/bynickname/{nickname}/list?begin=0&size=5]
+## All users by nickname [/user/bynickname/{nickname}/list?offset=0&count=5]
 
 + Parameters
+
     + nickname (required, string, `my-nickname`) ... String `nickname` of the user.
-    + begin (required, number, `0`) ... First element of the list
-    + size (required, number, `5`) ... Number of element for the list
+    + offset (required, number, `0`) ... First element of the list
+    + count (required, number, `5`) ... Number of element for the list
 
 ### Retrieve single user by his nickname [GET]
 Needs ROLE_USER
