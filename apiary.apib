@@ -147,47 +147,54 @@ Search is strict
     + count (required, number, `5`) ... Number of element for the list
 
 ### Retrieve single user by his nickname [GET]
-Needs ROLE_USER
 
-Also return users that nickname begin with 'nickname'.
++ Needs ROLE_USER
++ Also return users that nickname begin with 'nickname'.
 
 + Response 200 (application/json)
 
-        [ {
-            id: 1,
-            nickname: "testaccount",
-            authorityList: [
-                "ROLE_USER"
-            ],
-            credentialList: [
-                {
-                    identity: "test@gmail.com",
-                    domain: "internal",
-                    connected: true
-                },
-                {
-                    identity: "mydummyguididentity",
-                    domain: "device",
-                    connected: false
-                }
-            ]
-        },
-        
         {
-            id: 2,
-            nickname: "testaccountdummy",
-            authorityList: [
-                "ROLE_USER"
-            ],
-            credentialList: [
+            "data":
+            [
                 {
-                    identity: "identity",
-                    domain: "device",
-                    connected: false
+                    id: 1,
+                    nickname: "testaccount",
+                    authorityList: [
+                        "ROLE_USER"
+                    ],
+                    credentialList: [
+                        {
+                            identity: "test@gmail.com",
+                            domain: "internal",
+                            connected: true
+                        },
+                        {
+                            identity: "mydummyguididentity",
+                            domain: "device",
+                            connected: false
+                        }
+                    ]
+                },
+        
+                {
+                    id: 2,
+                    nickname: "testaccountdummy",
+                    authorityList: [
+                        "ROLE_USER"
+                    ],
+                    credentialList: [
+                        {
+                            identity: "identity",
+                            domain: "device",
+                            connected: false
+                        }
+                    ]
                 }
-            ]
-        }}
-
+            ],
+            "nbElt" : 1,
+            "offset" : 0,
+            "nbTotal" : 2
+        }
 ## Single user [/user]
 
 ### Subscribe and connect to the service [POST]
