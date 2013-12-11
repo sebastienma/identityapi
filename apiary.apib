@@ -374,38 +374,44 @@ Needs ROLE_ADMIN to use this verb.
 
 + Response 200 (application/json)
 
-        [
-            {
-                id: 1,
-                nickname: "testaccount",
-                authorityList: [
-                    "ROLE_USER"
-                ],
-                credentialList: [
+        {
+            "data": 
+                [
                     {
-                        identity: "test@gmail.com",
-                        domain: "internal",
-                        connected: true
+                        id: 1,
+                        nickname: "testaccount",
+                        authorityList: [
+                            "ROLE_USER"
+                        ],
+                        credentialList: [
+                            {
+                                identity: "test@gmail.com",
+                                domain: "internal",
+                                connected: true
+                            },
+                            {
+                                identity: "mydummyguididentity",
+                                domain: "device",
+                                connected: false
+                            }
+                        ]
                     },
                     {
-                        identity: "mydummyguididentity",
-                        domain: "device",
-                        connected: false
+                        id: 2,
+                        nickname: "fdsfds",
+                        authorityList: [
+                            "ROLE_USER"
+                        ],
+                        credentialList: [
+                            {
+                                identity: "fdsfsd@fdsfds.fds",
+                                domain: "internal",
+                                connected: true
+                            }
+                        ]
                     }
-                ]
-            },
-            {
-                id: 2,
-                nickname: "fdsfds",
-                authorityList: [
-                    "ROLE_USER"
                 ],
-                credentialList: [
-                    {
-                        identity: "fdsfsd@fdsfds.fds",
-                        domain: "internal",
-                        connected: true
-                    }
-                ]
-            }
-        ]
+            "nbElt": 2,
+            "offset": 0,
+            "nbTotal": 2
+        }
