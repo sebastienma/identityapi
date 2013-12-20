@@ -7,14 +7,12 @@ Identity API is a service which manage users and its preferences.
 # Group Authentication
 Authentication resources
 
-## Authentication [/auth/subscribe/{nickname}/{email}/{password}]
-+ Parameters
-    + nickname (required, string, `foobar`) ... `Nickname` of the user which want to login.
-    + email (required, string, `dummy@dummy.com`) ... `Email` of the user which want to login.
-    + password (required, string, `secret`) ... `Password` of the user which want to login.
+## Authentication [/auth/subscribe]
     
 ### Subscribe and connect to the service [POST]
-This verb will throw an error if nickname already exist.
+
++ This verb will throw an error if nickname or credential already exist.
++ And if there is an error with the syntaxe of the data
 
 + Response 200 (application/json)
 
