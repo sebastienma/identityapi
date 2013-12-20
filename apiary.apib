@@ -2,9 +2,11 @@ FORMAT: 1A
 HOST: http://www.google.com
 
 # Identity API
+
 Identity API is a service which manage users and its preferences.
 
 # Group Authentication
+
 Authentication resources
 
 ## Authentication [/auth/subscribe]
@@ -53,28 +55,44 @@ Authentication resources
             ]    
         }
 
-## Authentication [/auth/bydeviceid/{deviceid}]
+## Authentication [/auth/bydeviceid/{deviceId}/{serviceId}]
+
 + Parameters
-    + deviceid (required, string, `my-dummy-id`) ... String `deviceid` of the device which want to login.
+
+    + deviceId (required, string, `my-dummy-id`) ... String `deviceid` of the device which want to login.
+    + serviceId (required, integer, `1`) ... Integer Id of the selected service.
 
 ### Connection with a device identifier [POST]
-User is automatically created if not exists.
+
++ User is automatically created if not exists.
 
 + Response 200 (application/json)
 
         {
-            "nickname": "my-dummy-id",
-            "authorityList": "ROLE_USER",
-            "credentialList": [{
-                identity: "dummy@dummy.com",
-                secret: "password",
-                domain: "internal"
-            }],
-            "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-            "connectionKeyCreatedDate":1383658566439
+            "id": 57,
+            "nickname": "idofthedevice",
+            "avatar": null,
+            "serviceId": 1,
+            "authorityList":
+            [
+                "ROLE_USER"
+            ],
+            "connectionKey": "838f643b59b2fae6a0b18299a74945c3789fa2eb597c174808656da01863b410571dedd94c155d01",
+            "connectionKeyCreatedDate": 1387554190248,
+            "credentialList":
+            [
+                {
+                    "identity": "011554e6-2fe0-4e49-b2c1-468d12edff88",
+                    "domain": "device",
+                    "connected": true,
+                    "id": 58,
+                    "userId": 57,
+                    "secret": "",
+                    "accessToken": "idofthedevice"
+                }
+            ]
         }
-
-
+        
 ## Login [/auth/logout]
 
 ### Logout from the service [GET]
