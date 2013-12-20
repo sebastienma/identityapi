@@ -29,15 +29,28 @@ Authentication resources
 + Response 200 (application/json)
 
         {
-            "nickname": "foobar",
-            "authorityList": "ROLE_USER",
-            "credentialList": [{
-               identity: "dummy@dummy.com",
-               secret: "password",
-               domain: "internal"
-            }],
-            "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-            "connectionKeyCreatedDate":1383658566439
+            "id": 56,
+            "nickname": "test",
+            "avatar": "http://urlofavatar.com",
+            "serviceId": 1,
+            "authorityList":
+            [
+                "ROLE_USER"
+            ],
+            "connectionKey": "3bfb25b7a9c40e895b7121c30fdfbaded84fbf5f12b88788839b4011c8ca3ee189abe5aa4b82d92c",
+            "connectionKeyCreatedDate": 1387553949708,
+            "credentialList":
+            [
+                {
+                    "identity" : "test@gmail.com",
+                    "domain" : "internal",
+                    "connected" : true,
+                    "id" : 57,
+                    "userId" : 56,
+                    "secret": "",
+                    "accessToken": null
+                }    
+            ]    
         }
 
 ## Authentication [/auth/bydeviceid/{deviceid}]
