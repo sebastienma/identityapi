@@ -96,7 +96,8 @@ Authentication resources
 ## Login [/auth/logout]
 
 ### Logout from the service [GET]
-Needs ROLE_USER
+
++ Needs ROLE_USER
     
 + Response 200 (application/json)
 
@@ -104,7 +105,9 @@ Needs ROLE_USER
         
         
 ## Login [/login?username={username}&password={password}]
+
 + Parameters
+
     + username (required, string, `dummy@dummy.com`) ... String `username` of the user which want to login.
     + password (required, string, `secret`) ... String `paswword` of the user which want to login.
 
@@ -123,12 +126,15 @@ Needs ROLE_USER
         }
 
 ## Authentication [/auth/socialapicallback?accessToken={accessToken}&userId={userId}]
+
 + Parameters
+
     + accessToken (required, string, `my-wonderfulltoken`) ... `accessToken` of the user which want to login.
     + userId (required, int, `1`) ... `userId` of the user which want to login.
 
 ### Authenticate with socialAPI [GET]
-This verb is only used by socialAPI. Do not use. Just for internal use.
+
++ This verb is only used by socialAPI. Do not use. Just for internal use.
 
 + Response 200 (application/json)
 
@@ -145,17 +151,19 @@ This verb is only used by socialAPI. Do not use. Just for internal use.
         }
         
 # Group User
+
 User resources
 
 ## Single User by nickname [/user/bynickname/{nickname}/]
 
 + Parameters
+
     + nickname (required, string, `my-nickname`) ... String `nickname` of the user.
 
 ### Retrieve single user by his nickname [GET]
-Needs ROLE_USER
 
-Search is strict
++ Needs ROLE_USER
++ Search is strict
 
 + Response 200 (application/json)
 
@@ -240,42 +248,59 @@ Search is strict
 ## Single user [/user]
 
 ### Subscribe and connect to the service [POST]
-Needs ROLE_ADMIN
 
-This verb will throw an error if nickname already exist.
++ Needs ROLE_ADMIN
++ This verb will throw an error if nickname already exist.
 
 + Request (application/json)
 
     + Body
     
             {
-                "nickname": "foobar",
-                "role": "ROLE_USER",
-                "identity": "dummy@dummy.com",
-                "password": "mysecretpassword"
+                "nickname" : "test",
+                "avatar" : "http://urlofavatar.com",
+                "identity" : "test@gmail.com",
+                "password" : "12345678",
+                "serviceId" : "1"
             }
-            
+
 + Response 200 (application/json)
 
         {
-            "nickname": "foobar",
-            "authorityList": [
-                "ROLE_USER"],
-            "credentialList": [{
-               identity: "dummy@dummy.com",
-               domain: "internal"
-            }],
-            "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-            "connectionKeyCreatedDate":1383658566439
+            "id": 56,
+            "nickname": "test",
+            "avatar": "http://urlofavatar.com",
+            "serviceId": 1,
+            "authorityList":
+            [
+                "ROLE_USER"
+            ],
+            "connectionKey": "3bfb25b7a9c40e895b7121c30fdfbaded84fbf5f12b88788839b4011c8ca3ee189abe5aa4b82d92c",
+            "connectionKeyCreatedDate": 1387553949708,
+            "credentialList":
+            [
+                {
+                    "identity" : "test@gmail.com",
+                    "domain" : "internal",
+                    "connected" : true,
+                    "id" : 57,
+                    "userId" : 56,
+                    "secret": "",
+                    "accessToken": null
+                }    
+            ]    
         }
 
     
 ## Single User [/user/{user_id}/]
+
 + Parameters
+
     + user_id (required, number, `1`) ... Number `id` of the user.
 
 ### Retreive single user [GET]
-Needs ROLE_ADMIN
+
++ Needs ROLE_ADMIN
 
 + Response 200 (application/json)
 
@@ -300,7 +325,8 @@ Needs ROLE_ADMIN
         }
 
 ### Update a user [PUT]
-Needs ROLE_ADMIN
+
++ Needs ROLE_ADMIN
 
 + Request (application/json)
 
@@ -318,7 +344,8 @@ Needs ROLE_ADMIN
         }
         
 ### Delete single user [DELETE]
-Needs ROLE_ADMIN
+
++ Needs ROLE_ADMIN
 
 + Response 200 (application/json)
 
@@ -328,19 +355,18 @@ Needs ROLE_ADMIN
 
 
 ## User authority [/user/{user_id}/authority/{role_id}]
+
 + Parameters
+
     + user_id (required, number, `1`) ... Number `id` of the user.
     + role_id (required, string, `ROLE_USER`) ... Role of the user.
 
 ### Set the role for a user [POST]
 
-If ROLE_ADMIN is added, ROLE_USER is added too.
-
-If a lower role is set, all higher roles are deleted.
-
-If user has already at the role {role_id} no error is thrown.
-
-Needs ROLE_ADMIN to use this verb.
++ If ROLE_ADMIN is added, ROLE_USER is added too.
++ If a lower role is set, all higher roles are deleted.
++ If user has already at the role {role_id} no error is thrown.
++ Needs ROLE_ADMIN to use this verb.
 
 + Response 200 (application/json)
 
@@ -387,6 +413,7 @@ Needs ROLE_ADMIN to use this verb.
 ## User credential [/user/{user_id}/credential?domain={domain}&identity={identity}]
 
 + Parameters
+
     + user_id (required, number, `1`) ... Number `id` of the user.
     + domain (required, string, `internal`) ... Domain of the credential
     + identity (required, string, `my-identity`) ... Identity of the credential
