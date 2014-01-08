@@ -306,7 +306,7 @@ User resources
 
 ### Retreive single user [GET]
 
-+ Needs ROLE_ADMIN
++ ROLE_ADMIN could retreive any user but ROLE_USER could only get its own.
 
 + Response 200 (application/json)
 
@@ -332,7 +332,7 @@ User resources
 
 ### Update a user [PUT]
 
-+ Needs ROLE_ADMIN
++ ROLE_ADMIN could update any user but ROLE_USER could only update its own.
 
 + Request (application/json)
 
