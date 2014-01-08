@@ -361,10 +361,64 @@ User resources
 
 ## User profile [/user/{user_id}/profile]
 
++ Detail of a profile.
++ User must exist.
+
 + Parameters
 
-    + user_id (required, number, `1`) ... Number `id` of the user.
+    + user_id (required, number, `1`) ... Numeric `id` of the User to perform action with.
 
+### Create a user profile [POST]
+
++ User need to exist.
+
++ Request (application/json)
+
+        {   
+            "user_id":1, 
+            "data": "up to the service"    
+        }
+        
++ Response 200 (application/json)
+
+        {   
+            "user_id":1, 
+            "data": "up to the service"    
+        }
+
+### Retrieve a profile [GET]
+
++ Response 200 (application/json)
+        
+        {   
+            "user_id":1, 
+            "data": "up to the service"    
+        }
+
+### Update a Profile [PUT]
+
++ Request (application/json)
+
+        {   
+            "user_id":1, 
+            "data": "up to the service"    
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "user_id":1, 
+            "data": "up to the service"    
+        } 
+        
+### Remove a Profile [DELETE]
+
++ Response 200 (application/json)
+
+        {
+            "result": "Profile deleted"
+        }
+        
 ## User authority [/user/{user_id}/authority/{role_id}]
 
 + Parameters
