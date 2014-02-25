@@ -388,9 +388,14 @@ User resources
 ### Update a user [PUT]
 
 + ROLE_ADMIN could update any user but ROLE_USER could only update its own.
++ If nickname is changed, token is changed
 
 + Request (application/json)
 
+    + Headers
+    
+            token: usertoken
+            
     + Body
     
             {
@@ -401,7 +406,23 @@ User resources
 + Response 200 (application/json)
 
         {
-            "result" : "User modified"
+            id: 1,
+            nickname: "testaccount",
+            authorityList: [
+                "ROLE_USER"
+            ],
+            credentialList: [
+                {
+                    identity: "test@gmail.com",
+                    domain: "internal",
+                    connected: true
+                },
+                {
+                    identity: "mydummyguididentity",
+                    domain: "device",
+                    connected: false
+                }
+            ]
         }
         
 ### Delete single user [DELETE]
