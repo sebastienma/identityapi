@@ -40,7 +40,7 @@ Authentication resources
             "avatar": "http://urlofavatar.com",
             "data" : "{'name':'jean','lastname':'blaguin'}",
             "serviceId": 1,
-            "authorityList":
+            "roleList":
             [
                 "ROLE_USER"
             ],
@@ -92,7 +92,7 @@ Authentication resources
             "avatar": "http://urlofavatar.com",
             "data" : "{'name':'jean','lastname':'blaguin'}",
             "serviceId": 1,
-            "authorityList":
+            "roleList":
             [
                 "ROLE_USER"
             ],
@@ -131,7 +131,7 @@ Authentication resources
             "avatar": null,
             "data" : "{'name':'jean','lastname':'blaguin'}",
             "serviceId": 1,
-            "authorityList":
+            "roleList":
             [
                 "ROLE_USER"
             ],
@@ -199,7 +199,7 @@ Authentication resources
 
         {
             "nickname": "foobar",
-            "authorityList": "ROLE_USER",
+            "roleList": "ROLE_USER",
             "credentialList": [{
                 identity: "dummy@dummy.com",
                 secret: "password",
@@ -229,7 +229,7 @@ User resources
         {
             id: 1,
             nickname: "testaccount",
-            authorityList: [
+            roleList: [
                 "ROLE_USER"
             ],
             credentialList: [
@@ -267,7 +267,7 @@ User resources
                 {
                     id: 1,
                     nickname: "testaccount",
-                    authorityList: [
+                    roleList: [
                         "ROLE_USER"
                     ],
                     credentialList: [
@@ -287,7 +287,7 @@ User resources
                 {
                     id: 2,
                     nickname: "testaccountdummy",
-                    authorityList: [
+                    roleList: [
                         "ROLE_USER"
                     ],
                     credentialList: [
@@ -332,7 +332,7 @@ User resources
             "avatar": "http://urlofavatar.com",
             "data" : "{'name':'jean','lastname':'blaguin'}",
             "serviceId": 1,
-            "authorityList":
+            "roleList":
             [
                 "ROLE_USER"
             ],
@@ -368,7 +368,7 @@ User resources
         {
             id: 1,
             nickname: "testaccount",
-            authorityList: [
+            roleList: [
                 "ROLE_USER"
             ],
             "token": "3bfb25b7a9c40e895b7121c30fdfbaded84fbf5f12b88788839b4011c8ca3ee189abe5aa4b82d92c",
@@ -402,15 +402,17 @@ User resources
     
             {
                 "id": "1"
-                "nickname": "foobar"
+                "nickname": "foobar",
+                "data": "my data"
             }
             
 + Response 200 (application/json)
 
         {
             id: 1,
-            nickname: "testaccount",
-            authorityList:[
+            nickname: "foobar",
+            "data": "my data",
+            roleList:[
                 "ROLE_USER"
             ],
             "token": "3bfb25b7a9c40e895b7121c30fdfbaded84fbf5f12b88788839b4011c8ca3ee189abe5aa4b82d92c",
@@ -438,68 +440,8 @@ User resources
         {
             "result" : "User Deleted"
         }
-
-## User profile [/user/{user_id}/profile]
-
-+ Detail of a profile.
-+ User must exist.
-
-+ Parameters
-
-    + user_id (required, number, `1`) ... Numeric `id` of the User to perform action with.
-
-### Create a user profile [POST]
-
-+ User need to exist.
-
-+ Request (application/json)
-
-        {   
-            "user_id":1, 
-            "data": "up to the service"    
-        }
         
-+ Response 200 (application/json)
-
-        {   
-            "user_id":1, 
-            "data": "up to the service"    
-        }
-
-### Retrieve a profile [GET]
-
-+ Response 200 (application/json)
-        
-        {   
-            "user_id":1, 
-            "data": "up to the service"    
-        }
-
-### Update a Profile [PUT]
-
-+ Request (application/json)
-
-        {   
-            "user_id":1, 
-            "data": "up to the service"    
-        }
-        
-+ Response 200 (application/json)
-
-        {
-            "user_id":1, 
-            "data": "up to the service"    
-        } 
-        
-### Remove a Profile [DELETE]
-
-+ Response 200 (application/json)
-
-        {
-            "result": "Profile deleted"
-        }
-        
-## User authority [/user/{user_id}/authority/{role_id}]
+## User authority [/user/{user_id}/role/{role_id}]
 
 + Parameters
 
@@ -516,7 +458,7 @@ User resources
 + Response 200 (application/json)
 
         {
-            "result": "Authority changed"
+            "result": "Role changed"
         }
 
 ## User internal credential [/user/{user_id}/credential/internal]
@@ -543,7 +485,7 @@ User resources
             {
                 id: 1,
                 nickname: "admin",
-                authorityList: [
+                roleList: [
                     "ROLE_ADMIN"
                 ],
                 credentialList: [
@@ -593,7 +535,7 @@ User resources
                     {
                         id: 1,
                         nickname: "testaccount",
-                        authorityList: [
+                        roleList: [
                             "ROLE_USER"
                         ],
                         credentialList: [
@@ -612,7 +554,7 @@ User resources
                     {
                         id: 2,
                         nickname: "fdsfds",
-                        authorityList: [
+                        roleList: [
                             "ROLE_USER"
                         ],
                         credentialList: [
