@@ -9,6 +9,61 @@ Identity API is a service which manage users and its preferences.
 
 Authentication resources
 
+## Authentication [/auth/merge]
+    
+### Merge account with connected user [POST]
+
++ Merge an existing account (userA) with an another
++ If account (identity/secred) exist (userB), all userA accesses are moved to userB, userA is removed, only nicknames and data field are kept
++ Merge could only be done if userA doesn't have any identity/secret access
++ If no account exists with (identity/secret), identity/secret are merged in userA (except if userA have already an identity/secret access)
++ A user could not have more than on identity/secret access
+
++ Request (application/json)
+
+    + Headers
+    
+            token: tokenid of userA
+            
+    + Body
+    
+            {
+                "identity" : "test@gmail.com",
+                "secret" : "12345678"
+            }
+
++ Response 200 (application/json)
+
+        {
+            "id": 56,
+            "nickname": "test",
+            "avatar": "http://urlofavatar.com",
+            "datas" : "{'name':'jean','lastname':'blaguin'}",
+            "serviceId": 1,
+            "authorityList":
+            [
+                "ROLE_USER"
+            ],
+            "token": "3bfb25b7a9c40e895b7121c30fdfbaded84fbf5f12b88788839b4011c8ca3ee189abe5aa4b82d92c",
+            "tokenDate": 1387553949708,
+            "credentialList":
+            [
+                {
+                    "identity" : "deviceID",
+                    "domain" : "DEVICE",
+                    "secret": "",
+                    "accessToken": null
+                },
+                {
+                    "identity" : "test@gmail.com",
+                    "domain" : "INTERNAL",
+                    "connected" : true,
+                    "secret": "",
+                    "accessToken": null
+                }    
+            ]    
+        }
+        
 ## Authentication [/auth/subscribe]
     
 ### Subscribe and connect to the service [POST]
@@ -41,8 +96,8 @@ Authentication resources
             [
                 "ROLE_USER"
             ],
-            "connectionKey": "3bfb25b7a9c40e895b7121c30fdfbaded84fbf5f12b88788839b4011c8ca3ee189abe5aa4b82d92c",
-            "connectionKeyCreatedDate": 1387553949708,
+            "token": "3bfb25b7a9c40e895b7121c30fdfbaded84fbf5f12b88788839b4011c8ca3ee189abe5aa4b82d92c",
+            "tokenDate": 1387553949708,
             "credentialList":
             [
                 {
@@ -80,8 +135,8 @@ Authentication resources
             [
                 "ROLE_USER"
             ],
-            "connectionKey": "838f643b59b2fae6a0b18299a74945c3789fa2eb597c174808656da01863b410571dedd94c155d01",
-            "connectionKeyCreatedDate": 1387554190248,
+            "token": "838f643b59b2fae6a0b18299a74945c3789fa2eb597c174808656da01863b410571dedd94c155d01",
+            "tokenDate": 1387554190248,
             "credentialList":
             [
                 {
@@ -125,8 +180,8 @@ Authentication resources
             "pseudo" : "toto",
             "permission":"ROLE_USER",
             "favoriteProviderForNotification" : "FACEBOOK",
-            "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-            "connectionKeyCreatedDate":1383658566439
+            "token":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+            "tokenDate":1383658566439
         }
 
 ## Authentication [/auth/socialapicallback?accessToken={accessToken}&userId={userId}]
@@ -150,8 +205,8 @@ Authentication resources
                 secret: "password",
                 domain: "internal"
             }],
-            "connectionKey":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
-            "connectionKeyCreatedDate":1383658566439
+            "token":"dGVzdEBnbWFpbC5jb206MTM4NDI2MzM2Njo3NzFhZDMxN2JkYTVhNjdmZjZiNmVkNWJmZGQzNTY3MDgxNzM1MmFkY2RhYTAyMDkzZTBjY2VjZWNkYmE0MmQ2",
+            "tokenDate":1383658566439
         }
         
 # Group User
@@ -281,8 +336,8 @@ User resources
             [
                 "ROLE_USER"
             ],
-            "connectionKey": "3bfb25b7a9c40e895b7121c30fdfbaded84fbf5f12b88788839b4011c8ca3ee189abe5aa4b82d92c",
-            "connectionKeyCreatedDate": 1387553949708,
+            "token": "3bfb25b7a9c40e895b7121c30fdfbaded84fbf5f12b88788839b4011c8ca3ee189abe5aa4b82d92c",
+            "tokenDate": 1387553949708,
             "credentialList":
             [
                 {
