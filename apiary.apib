@@ -172,16 +172,23 @@ Authentication resources
         {"result": "Logout with success"}
         
         
-## Login [/login?username={username}&password={password}&serviceId={serviceId}]
+## Login [/login?username={username}&password={password}]
 
 + Parameters
 
     + username (required, string, `dummy@dummy.com`) ... String `username` of the user which want to login.
     + password (required, string, `secret`) ... String `paswword` of the user which want to login.
-    + serviceId (required, integer, `10`) ... Integer Service identifier which want to login.
 
 ### Log to the service [GET]
+
++ A mandatory header 'X-SocialAPI-Service-Name' is required
+
++ Request
+
+    + Headers
     
+            X-SocialAPI-Service-Name: name of the service
+            
 + Response 200 (application/json)
 
         {
@@ -320,8 +327,13 @@ User resources
 
 + Needs ROLE_ADMIN
 + This verb will throw an error if nickname already exist.
++ A mandatory header 'X-SocialAPI-Service-Name' is required
 
 + Request (application/json)
+
+    + Headers
+    
+            X-SocialAPI-Service-Name: name of the service
 
     + Body
     
@@ -330,8 +342,7 @@ User resources
                 "avatar" : "http://urlofavatar.com",
                 "data" : "{'name':'jean','lastname':'blaguin'}",
                 "identity" : "test@gmail.com",
-                "password" : "12345678",
-                "serviceId" : "1"
+                "password" : "12345678"
             }
 
 + Response 200 (application/json)
