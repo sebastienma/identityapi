@@ -28,7 +28,7 @@ Authentication resources
     + Body
     
             {
-                "identity" : "test@gmail.com",
+                "identity" : "identity@mail.com",
                 "secret" : "12345678"
             }
 
@@ -55,7 +55,7 @@ Authentication resources
                     "accessToken": null
                 },
                 {
-                    "identity" : "test@gmail.com",
+                    "identity" : "identity@mail.com",
                     "domain" : "INTERNAL",
                     "connected" : true,
                     "secret": "",
@@ -84,7 +84,7 @@ Authentication resources
                 "nickname" : "test",
                 "avatar" : "http://urlofavatar.com",
                 "data" : "{'name':'jean','lastname':'blaguin'}", 
-                "identity" : "test@gmail.com",
+                "identity" : "identity@mail.com",
                 "password" : "12345678"
             }
 
@@ -105,7 +105,7 @@ Authentication resources
             "credentialList":
             [
                 {
-                    "identity" : "test@gmail.com",
+                    "identity" : "identity@mail.com",
                     "domain" : "internal",
                     "connected" : true,
                     "id" : 57,
@@ -176,7 +176,7 @@ Authentication resources
 
 + Parameters
 
-    + username (required, string, `dummy@dummy.com`) ... String `username` of the user which want to login.
+    + username (required, string, `identity@mail.com`) ... String `username` of the user which want to login.
     + password (required, string, `secret`) ... String `paswword` of the user which want to login.
 
 ### Log to the service [GET]
@@ -193,7 +193,7 @@ Authentication resources
 
         {
             "id" : "1" ,
-            "email" : "test@gmail.com",
+            "email" : "identity@mail.com",
             "pseudo" : "toto",
             "permission":"ROLE_USER",
             "favoriteProviderForNotification" : "FACEBOOK",
@@ -218,7 +218,7 @@ Authentication resources
             "nickname": "foobar",
             "roleList": "ROLE_USER",
             "credentialList": [{
-                identity: "dummy@dummy.com",
+                identity: "identity@mail.com",
                 secret: "password",
                 domain: "internal"
             }],
@@ -251,7 +251,7 @@ User resources
             ],
             credentialList: [
                 {
-                    identity: "test@gmail.com",
+                    identity: "identity@mail.com",
                     domain: "internal",
                     connected: true
                 },
@@ -289,7 +289,7 @@ User resources
                     ],
                     credentialList: [
                         {
-                            identity: "test@gmail.com",
+                            identity: "identity@mail.com",
                             domain: "internal",
                             connected: true
                         },
@@ -341,7 +341,7 @@ User resources
                 "nickname" : "test",
                 "avatar" : "http://urlofavatar.com",
                 "data" : "{'name':'jean','lastname':'blaguin'}",
-                "identity" : "test@gmail.com",
+                "identity" : "identity@mail.com",
                 "password" : "12345678"
             }
 
@@ -362,7 +362,7 @@ User resources
             "credentialList":
             [
                 {
-                    "identity" : "test@gmail.com",
+                    "identity" : "identity@mail.com",
                     "domain" : "internal",
                     "connected" : true,
                     "id" : 57,
@@ -396,7 +396,7 @@ User resources
             "tokenDate": 1387553949708,
             credentialList: [
                 {
-                    identity: "test@gmail.com",
+                    identity: "identity@mail.com",
                     domain: "internal",
                     connected: true
                 },
@@ -440,7 +440,7 @@ User resources
             "tokenDate": 1387553949708,
             credentialList: [
                 {
-                    identity: "test@gmail.com",
+                    identity: "identity@mail.com",
                     domain: "internal",
                     connected: true
                 },
@@ -497,7 +497,7 @@ User resources
     + Body
     
             {
-                "identity": "admin"
+                "identity": "identity@mail.com"
                 "secret": "123"
             }
             
@@ -511,7 +511,7 @@ User resources
                 ],
                 credentialList: [
                     {
-                        identity: "admin",
+                        identity: "identity@mail.com",
                         domain: "internal",
                         connected: false
                     }
@@ -524,7 +524,7 @@ User resources
 
     + user_id (required, number, `1`) ... Number `id` of the user.
     + domain (required, string, `internal`) ... Domain of the credential
-    + identity (required, string, `my-identity`) ... Identity of the credential
+    + identity (required, string, `identity@mail.com`) ... Identity of the credential
 
 ### Delete the credential [DELETE]
 
@@ -540,7 +540,7 @@ User resources
 
 + Parameters
 
-    + identity (required, string, `my-identity@mail.com`) ... Identity who wants reset his password (for INTERNAL credential)
+    + identity (required, string, `identity@mail.com`) ... Identity who wants reset his password (for INTERNAL credential)
 
 ### Reset password [GET]
 
@@ -585,7 +585,7 @@ User resources
                         ],
                         credentialList: [
                             {
-                                identity: "test@gmail.com",
+                                identity: "identity@mail.com",
                                 domain: "internal",
                                 connected: true
                             },
@@ -604,7 +604,7 @@ User resources
                         ],
                         credentialList: [
                             {
-                                identity: "fdsfsd@fdsfds.fds",
+                                identity: "identity@mail.com",
                                 domain: "internal",
                                 connected: true
                             }
