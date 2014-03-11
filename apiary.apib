@@ -535,7 +535,31 @@ User resources
         {
             "result": "credential deleted"
         }
-        
+
+## User List [/identity/rest/user/resetPassword/{identity}]
+
++ Parameters
+
+    + identity (required, string, `my-identity@mail.com`) ... Identity who wants reset his password (for INTERNAL credential)
+
+### Reset password [GET]
+
++ This will reset the password of the user and send it on his identity (email) 
++ A mandatory header 'X-SocialAPI-Service-Name' is required
+
++ Request
+
+    + Headers
+    
+            X-SocialAPI-Service-Name: name of the service
+
+
++ Response 200 (application/json)
+
+        {
+            "result": "Email sent"
+        }
+
 
 ## User List [/identity/rest/user/list?offset=0&count=5]
 
