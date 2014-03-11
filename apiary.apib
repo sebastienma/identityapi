@@ -9,7 +9,7 @@ Identity API is a service which manage users and its preferences.
 
 Authentication resources
 
-## Authentication [/auth/merge]
+## Authentication [/identity/rest/auth/merge]
     
 ### Merge account with connected user [POST]
 
@@ -64,7 +64,7 @@ Authentication resources
             ]    
         }
         
-## Authentication [/auth/subscribe]
+## Authentication [/identity/rest/auth/subscribe]
     
 ### Subscribe and connect to the service [POST]
 
@@ -116,7 +116,7 @@ Authentication resources
             ]    
         }
 
-## Authentication [/auth/bydeviceid/{deviceId}]
+## Authentication [/identity/rest/auth/bydeviceid/{deviceId}]
 
 + Parameters
 
@@ -161,7 +161,7 @@ Authentication resources
             ]
         }
         
-## Login [/auth/logout]
+## Login [/identity/rest/auth/logout]
 
 ### Logout from the service [GET]
 
@@ -172,7 +172,7 @@ Authentication resources
         {"result": "Logout with success"}
         
         
-## Login [/login?username={username}&password={password}]
+## Login [/identity/rest/login?username={username}&password={password}]
 
 + Parameters
 
@@ -201,7 +201,7 @@ Authentication resources
             "tokenDate":1383658566439
         }
 
-## Authentication [/auth/socialapicallback?accessToken={accessToken}&userId={userId}]
+## Authentication [/identity/rest/auth/socialapicallback?accessToken={accessToken}&userId={userId}]
 
 + Parameters
 
@@ -230,7 +230,7 @@ Authentication resources
 
 User resources
 
-## Single User by nickname [/user/bynickname/{nickname}]
+## Single User by nickname [/identity/rest/user/bynickname/{nickname}]
 
 + Parameters
 
@@ -263,7 +263,7 @@ User resources
             ]
         }
        
-## All users by nickname [/user/bynickname/{nickname}/list?offset=0&count=5]
+## All users by nickname [/identity/rest/user/bynickname/{nickname}/list?offset=0&count=5]
 
 + Parameters
 
@@ -321,7 +321,7 @@ User resources
             "nbTotal" : 2
         }
         
-## Single user [/user]
+## Single user [/identity/rest/user]
 
 ### Subscribe and connect to the service [POST]
 
@@ -374,7 +374,7 @@ User resources
         }
 
     
-## Single User [/user/{user_id}]
+## Single User [/identity/rest/user/{user_id}]
 
 + Parameters
 
@@ -462,7 +462,7 @@ User resources
             "result" : "User Deleted"
         }
         
-## User authority [/user/{user_id}/role/{role_id}]
+## User authority [/identity/rest/user/{user_id}/role/{role_id}]
 
 + Parameters
 
@@ -482,7 +482,7 @@ User resources
             "result": "Role changed"
         }
 
-## User internal credential [/user/{user_id}/credential/internal]
+## User internal credential [/identity/rest/user/{user_id}/credential/internal]
 
 + Parameters
 
@@ -518,7 +518,7 @@ User resources
                 ]
             }
 
-## User credential [/user/{user_id}/credential?domain={domain}&identity={identity}]
+## User credential [/identity/rest/user/{user_id}/credential?domain={domain}&identity={identity}]
 
 + Parameters
 
@@ -537,7 +537,7 @@ User resources
         }
         
 
-## User List [/user/list?offset=0&count=5]
+## User List [/identity/rest/user/list?offset=0&count=5]
 
 + Parameters
 
