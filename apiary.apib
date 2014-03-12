@@ -172,16 +172,12 @@ Authentication resources
         {"result": "Logout with success"}
         
         
-## Login [/identity/rest/login?username={username}&password={password}]
+## Login [/identity/rest/login]
 
-+ Parameters
-
-    + username (required, string, `identity@mail.com`) ... String `username` of the user which want to login.
-    + password (required, string, `secret`) ... String `paswword` of the user which want to login.
-
-### Log to the service [GET]
+### Log to the service [POST]
 
 + A mandatory header 'X-SocialAPI-Service-Name' is required
++ A Json object must be posted {username: "", password: ""}
 
 + Request
 
