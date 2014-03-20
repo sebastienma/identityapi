@@ -319,8 +319,6 @@ User resources
 
 ### Get the current connected user [GET]
 
-+ A mandatory header 'X-SocialAPI-Service-Name' is required
-
 + Request
 
     + Headers
@@ -355,6 +353,50 @@ User resources
             ]    
         }
 
+
+### Update the current connected user [PUT]
+
++ If nickname is changed, token is changed
+
++ Request (application/json)
+
+    + Headers
+    
+            token: the token of currently connected user
+            
+    + Body
+    
+            {
+                "id": "1"
+                "nickname": "foobar",
+                "data": "my data"
+            }
+            
++ Response 200 (application/json)
+
+        {
+            id: 1,
+            nickname: "foobar",
+            "data": "my data",
+            roleList:[
+                "ROLE_USER"
+            ],
+            "token": "3bfb25b7a9c40e895b7121c30fdfbaded84fbf5f12b88788839b4011c8ca3ee189abe5aa4b82d92c",
+            "tokenDate": 1387553949708,
+            credentialList: [
+                {
+                    identity: "identity@mail.com",
+                    domain: "internal",
+                    connected: true
+                },
+                {
+                    identity: "mydummyguididentity",
+                    domain: "device",
+                    connected: false
+                }
+            ]
+        }
+        
 ## Single User by its id [/identity/rest/user/{user_id}]
 
 + Parameters
@@ -455,6 +497,92 @@ User resources
             "result" : "User Deleted"
         }
         
+
+## User List [/identity/rest/user/list?offset=0&count=5]
+
++ Parameters
+
+    + offset (required, number, `0`) ... First element of the list
+    + count (required, number, `5`) ... Number of element for the list
+
+### Retreive user list [GET]
+
++ Needs ROLE_ADMIN
+
++ Request
+
+    + Headers
+    
+            token: the token of currently connected user
+            
++ Response 200 (application/json)
+
+        {
+            "data": 
+                [
+                    {
+                        id: 1,
+                        nickname: "testaccount",
+                        roleList: [
+                            "ROLE_USER"
+                        ],
+                        credentialList: [
+                            {
+                                identity: "identity@mail.com",
+                                domain: "internal",
+                                connected: true
+                            },
+                            {
+                                identity: "mydummyguididentity",
+                                domain: "device",
+                                connected: false
+                            }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        nickname: "fdsfds",
+                        roleList: [
+                            "ROLE_USER"
+                        ],
+                        credentialList: [
+                            {
+                                identity: "identity@mail.com",
+                                domain: "internal",
+                                connected: true
+                            }
+                        ]
+                    }
+                ],
+            "nbElt": 2,
+            "offset": 0,
+            "nbTotal": 2
+        }
+
+
+## User List [/identity/rest/user/resetPassword/{identity}]
+
++ Parameters
+
+    + identity (required, string, `identity@mail.com`) ... Identity who wants reset his password (for INTERNAL credential)
+
+### Reset password [GET]
+
++ This will reset the password of the user and send it on his identity (email) 
++ A mandatory header 'X-SocialAPI-Service-Name' is required
+
++ Request
+
+    + Headers
+    
+            X-SocialAPI-Service-Name: name of the service
+
+
++ Response 200 (application/json)
+
+        {
+            "result": "Email sent"
+        }
 
 ## Single User by nickname [/identity/rest/user/bynickname/{nickname}]
 
@@ -559,8 +687,7 @@ User resources
             "nbTotal" : 2
         }
 
-    
-## User authority [/identity/rest/user/{user_id}/role/{role_id}]
+## User role [/identity/rest/user/{user_id}/role/{role_id}]
 
 + Parameters
 
@@ -592,7 +719,7 @@ User resources
 
     + user_id (required, number, `1`) ... Number `id` of the user.
     
-### Post internal credential [POST]
+### Create internal credential [POST]
 
 + Add internal credential to this user
 
@@ -625,6 +752,40 @@ User resources
                 ]
             }
 
+### Update internal credential [PUT]
+
++ Update the internal credential of this user
+
++ Request (application/json)
+
+    + Headers
+    
+            token: the token of currently connected user
+    + Body
+    
+            {
+                "identity": "identity@mail.com"
+                "secret": "123"
+            }
+            
++ Response 200 (application/json)
+
+            {
+                id: 1,
+                nickname: "admin",
+                roleList: [
+                    "ROLE_ADMIN"
+                ],
+                credentialList: [
+                    {
+                        identity: "identity@mail.com",
+                        domain: "internal",
+                        connected: false
+                    }
+                ]
+            }
+
+
 ## User credential [/identity/rest/user/{user_id}/credential?domain={domain}&identity={identity}]
 
 + Parameters
@@ -646,91 +807,5 @@ User resources
 + Response 200 (application/json)
 
         {
-            "result": "credential deleted"
-        }
-
-## User List [/identity/rest/user/resetPassword/{identity}]
-
-+ Parameters
-
-    + identity (required, string, `identity@mail.com`) ... Identity who wants reset his password (for INTERNAL credential)
-
-### Reset password [GET]
-
-+ This will reset the password of the user and send it on his identity (email) 
-+ A mandatory header 'X-SocialAPI-Service-Name' is required
-
-+ Request
-
-    + Headers
-    
-            X-SocialAPI-Service-Name: name of the service
-
-
-+ Response 200 (application/json)
-
-        {
-            "result": "Email sent"
-        }
-
-
-## User List [/identity/rest/user/list?offset=0&count=5]
-
-+ Parameters
-
-    + offset (required, number, `0`) ... First element of the list
-    + count (required, number, `5`) ... Number of element for the list
-
-### Retreive user list [GET]
-
-+ Needs ROLE_ADMIN
-
-+ Request
-
-    + Headers
-    
-            token: the token of currently connected user
-            
-+ Response 200 (application/json)
-
-        {
-            "data": 
-                [
-                    {
-                        id: 1,
-                        nickname: "testaccount",
-                        roleList: [
-                            "ROLE_USER"
-                        ],
-                        credentialList: [
-                            {
-                                identity: "identity@mail.com",
-                                domain: "internal",
-                                connected: true
-                            },
-                            {
-                                identity: "mydummyguididentity",
-                                domain: "device",
-                                connected: false
-                            }
-                        ]
-                    },
-                    {
-                        id: 2,
-                        nickname: "fdsfds",
-                        roleList: [
-                            "ROLE_USER"
-                        ],
-                        credentialList: [
-                            {
-                                identity: "identity@mail.com",
-                                domain: "internal",
-                                connected: true
-                            }
-                        ]
-                    }
-                ],
-            "nbElt": 2,
-            "offset": 0,
-            "nbTotal": 2
+            "result": "Credential deleted"
         }
