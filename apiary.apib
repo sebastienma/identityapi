@@ -264,7 +264,7 @@ Authentication resources
 
 User resources
 
-## Single user [/identity/rest/user]
+## Current user [/identity/rest/user]
 
 ### Create a user [POST]
 
@@ -395,6 +395,53 @@ User resources
                     connected: false
                 }
             ]
+        }
+        
+## Current user data [/identity/rest/user/data]
+
+### Retreive user data [GET]
+
++ Retreive user data (hashmap)
+
++ Request
+
+    + Headers
+    
+            token: the token of currently connected user
+          
++ Response 200 (application/json)
+
+        {
+            "firstname": "Juan",
+            "lastname": "Maria",
+            "avatar": "http://urltomyavatar.com/image.jpg"
+        }
+        
+### Update user data [PUT]
+
++ Update user data.
++ All existing data is kept. New data is merged with existing one.
+
++ Request (application/json)
+
+    + Headers
+    
+            token: the token of currently connected user
+
+    + Body
+    
+            {
+                "firstname": "Juan",
+                "lastname": "Maria",
+                "avatar": "http://urltomyavatar.com/image.jpg"
+            }
+    
++ Response 200 (application/json)
+
+        {
+            "firstname": "Juan",
+            "lastname": "Maria",
+            "avatar": "http://urltomyavatar.com/image.jpg"
         }
         
 ## Single User by its id [/identity/rest/user/{user_id}]
