@@ -483,6 +483,22 @@ User resources
             "result": "data updated"
         } 
         
+### Remove data for this key [DELETE]
+
++ Data will be removed for this key.
+
++ Request
+
+    + Headers
+    
+            token: the token of currently connected user
+
++ Response 200 (application/json)
+
+        {
+            "result": "data removed"
+        } 
+        
 ## Single User by its id [/identity/rest/user/{user_id}]
 
 + Parameters
