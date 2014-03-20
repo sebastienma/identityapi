@@ -421,6 +421,8 @@ User resources
 
 + Update user data.
 + All existing data is kept. New data is merged with existing one.
++ If user has no data, data is created.
++ Unity constraint is applied on fiedls that registered in the associated service.
 
 + Request (application/json)
 
@@ -431,18 +433,55 @@ User resources
     + Body
     
             {
-                "firstname": "Juan",
-                "lastname": "Maria",
-                "avatar": "http://urltomyavatar.com/image.jpg"
+                "firstname": "Juan"
             }
     
 + Response 200 (application/json)
 
         {
-            "firstname": "Juan",
-            "lastname": "Maria",
-            "avatar": "http://urltomyavatar.com/image.jpg"
+            "result": "data updated"
         }
+
+## Data value by key [/identity/rest/user/data/{key}]
+
++ Parameters
+
+    + key (required, string, `mykey`) ... `key` of the data to retrieve.
+
+### Retreive data for this key [GET]
+
++ Request
+
+    + Headers
+    
+            token: the token of currently connected user
+          
++ Response 200 (application/json)
+
+        {
+            "value": "Juan"
+        }
+
+
+### Update data for this key [PUT]
+
++ Request
+
+    + Headers
+    
+            token: the token of currently connected user
+
+    + Body
+
+            {
+                "value": "Juan"
+            } 
+
++ Response 200 (application/json)
+
+        {
+            "result": "data updated"
+        } 
         
 ## Single User by its id [/identity/rest/user/{user_id}]
 
