@@ -85,7 +85,8 @@ Authentication resources
                 "avatar" : "http://urlofavatar.com",
                 "data" : "{'name':'jean','lastname':'blaguin'}", 
                 "identity" : "identity@mail.com",
-                "password" : "12345678"
+                "password" : "12345678",
+                "role": "ROLE_USER"
             }
 
 + Response 200 (application/json)
@@ -171,21 +172,17 @@ Authentication resources
 
         {"result": "Logout with success"}
         
-        
-## Login [/identity/rest/auth/login]
+## Authentication [/identity/rest/auth/socialapicallback?accessToken={accessToken}&userId={userId}]
 
-### Log to the service [POST]
++ Parameters
 
-+ A mandatory header 'X-SocialAPI-Service-Name' is required
-+ A Json object must be posted {username: "", password: ""}
-+ The 'username' is the user internal credential 'identity' field
+    + accessToken (required, string, `my-wonderfulltoken`) ... `accessToken` of the user which want to login.
+    + userId (required, int, `1`) ... `userId` of the user which want to login.
 
-+ Request
+### Authenticate with socialAPI [GET]
 
-    + Headers
-    
-            X-SocialAPI-Service-Name: name of the service
-            
++ This verb is only used by socialAPI. Do not use. Just for internal use.
+
 + Response 200 (application/json)
 
         {
@@ -213,18 +210,22 @@ Authentication resources
                 }    
             ]    
         }
+        
+        
+## Login [/identity/rest/auth/login]
 
-## Authentication [/identity/rest/auth/socialapicallback?accessToken={accessToken}&userId={userId}]
+### Log to the service [POST]
 
-+ Parameters
++ A mandatory header 'X-SocialAPI-Service-Name' is required
++ A Json object must be posted {username: "", password: ""}
++ The 'username' is the user internal credential 'identity' field
 
-    + accessToken (required, string, `my-wonderfulltoken`) ... `accessToken` of the user which want to login.
-    + userId (required, int, `1`) ... `userId` of the user which want to login.
++ Request
 
-### Authenticate with socialAPI [GET]
-
-+ This verb is only used by socialAPI. Do not use. Just for internal use.
-
+    + Headers
+    
+            X-SocialAPI-Service-Name: name of the service
+            
 + Response 200 (application/json)
 
         {
