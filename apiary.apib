@@ -14,10 +14,10 @@ Authentication resources
 ### Merge account with connected user [POST]
 
 + Merge an existing account (userA) with an another
-+ If account (identity/secred) exist (userB), all userA accesses are moved to userB, userA is removed, only nicknames and data field are kept
-+ Merge could only be done if userA doesn't have any identity/secret access
-+ If no account exists with (identity/secret), identity/secret are merged in userA (except if userA have already an identity/secret access)
-+ A user could not have more than on identity/secret access
++ If account (identity/password) exist (userB), all userA accesses are moved to userB, userA is removed, only nicknames and data field are kept
++ Merge could only be done if userA doesn't have any identity/password access
++ If no account exists with (identity/password), identity/password are merged in userA (except if userA have already an identity/password access)
++ A user could not have more than on identity/password access
 
 + Request (application/json)
 
@@ -29,7 +29,7 @@ Authentication resources
     
             {
                 "identity" : "identity@mail.com",
-                "secret" : "12345678"
+                "password" : "12345678"
             }
 
 + Response 200 (application/json)
@@ -51,14 +51,14 @@ Authentication resources
                 {
                     "identity" : "deviceID",
                     "domain" : "DEVICE",
-                    "secret": "",
+                    "password": "",
                     "accessToken": null
                 },
                 {
                     "identity" : "identity@mail.com",
                     "domain" : "INTERNAL",
                     "connected" : true,
-                    "secret": "",
+                    "password": "",
                     "accessToken": null
                 }    
             ]    
@@ -111,7 +111,7 @@ Authentication resources
                     "connected" : true,
                     "id" : 57,
                     "userId" : 56,
-                    "secret": "",
+                    "password": "",
                     "accessToken": null
                 }    
             ]    
@@ -156,7 +156,7 @@ Authentication resources
                     "connected": true,
                     "id": 58,
                     "userId": 57,
-                    "secret": "",
+                    "password": "",
                     "accessToken": "idofthedevice"
                 }
             ]
@@ -211,7 +211,7 @@ Authentication resources
                     "connected" : true,
                     "id" : 57,
                     "userId" : 56,
-                    "secret": "",
+                    "password": "",
                     "accessToken": null
                 }    
             ]    
@@ -223,8 +223,8 @@ Authentication resources
 ### Log to the service [POST]
 
 + A mandatory header 'X-SocialAPI-Service-Name' is required
-+ A Json object must be posted {username: "", password: ""}
-+ The 'username' is the user internal credential 'identity' field
++ A Json object must be posted {identity: "", password: ""}
++ The 'identity' is the user internal credential 'identity' field
 
 + Request
 
@@ -254,7 +254,7 @@ Authentication resources
                     "connected" : true,
                     "id" : 57,
                     "userId" : 56,
-                    "secret": "",
+                    "password": "",
                     "accessToken": null
                 }    
             ]    
@@ -311,7 +311,7 @@ User resources
                     "connected" : true,
                     "id" : 57,
                     "userId" : 56,
-                    "secret": "",
+                    "password": "",
                     "accessToken": null
                 }    
             ]    
@@ -347,7 +347,7 @@ User resources
                     "connected" : true,
                     "id" : 57,
                     "userId" : 56,
-                    "secret": "",
+                    "password": "",
                     "accessToken": null
                 }    
             ]    
@@ -834,7 +834,7 @@ User resources
     
             {
                 "identity": "identity@mail.com"
-                "secret": "123"
+                "password": "123"
             }
             
 + Response 200 (application/json)
@@ -867,7 +867,7 @@ User resources
     
             {
                 "identity": "identity@mail.com"
-                "secret": "123"
+                "password": "123"
             }
             
 + Response 200 (application/json)
