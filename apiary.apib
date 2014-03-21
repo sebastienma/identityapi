@@ -397,7 +397,7 @@ User resources
 ### Update user data [PUT]
 
 + Update user data.
-+ All existing data is kept. New data is merged with existing one.
++ All existing data is kept. New data is merged with existing one, if a conflict occurs (same key) value is overwritten.
 + If user has no data, data is created.
 + Unity constraint is applied on fiedls that registered in the associated service.
 
