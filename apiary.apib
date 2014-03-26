@@ -256,7 +256,7 @@ Authentication resources
             "url": "http://oauthdanceurl"
         }
 
-## Social connection url [/identity/rest/auth/social/connect/{domain}/{applicationId}/{userId}/{token}]
+## Social connection url [/identity/rest/auth/social/connect/{domain}/{applicationId}?userId={userId}&token={token}]
 
 + Parameters
 
@@ -276,6 +276,23 @@ Authentication resources
         <html>
             <result>of the oauth dance</result>
         </html>
+
+## Social connection url [/identity/rest/auth/social/callback?userId={userId}&token={token}]
+
++ Parameters
+
+    + userId (required, string, `132154312321`) ... The user (identityAPI) identifier.
+    + token (required, string, `132154312321`) ... The token of the current connected user.
+
+### Social callback [GET]
+
++ This verb is only called by socialAPI.
+
++ Response 200 (application/json)
+    
+        {
+            "result": "ok"
+        }
 
 # Group User
 
