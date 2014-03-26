@@ -256,27 +256,27 @@ Authentication resources
             "url": "http://oauthdanceurl"
         }
 
-## Social connection url [/identity/rest/auth/social/connect]
+## Social connection url [/identity/rest/auth/social/connect/{domain}/{applicationId}/{userId}/{token}]
 
-### Get the social authentication url [GET]
++ Parameters
 
-+ This verb should be called to retreive the OAuth dance url.
+    + domain (required, string, `facebook`) ... The social `domain` where user want to authenticate.
+    + applicationId (required, string, `132154312321`) ... The social application which will be used to access the social network.
+    + userId (required, string, `132154312321`) ... The user (identityAPI) identifier.
+    + token (required, string, `132154312321`) ... The token of the current connected user.
+
+### Start OAuth dance [GET]
+
++ This verb will start the OAuth dance.
 + Client applications will redirect the user to this url to authenticate on the social network.
-+ 'X-SocialAPI-Service-Name' header is mandatory if no 'token' header is sent.
++ An url parameter "success" is returned at the end of the OAuth dance, it contains true if user is correctly connected.
 
-+ Request
++ Response 200 (text/html)
 
-    + Headers
-    
-            X-SocialAPI-Service-Name: name of the service
-            token: current connected user
-            
-+ Response 200 (application/json)
+        <html>
+            <result>of the oauth dance</result>
+        </html>
 
-        {
-            "url": "http://oauthdanceurl"
-        }
-        
 # Group User
 
 User resources
