@@ -185,49 +185,6 @@ Authentication resources
 
         {"result": "Logout with success"}
         
-## Authentication [/identity/rest/auth/socialapicallback?accessToken={accessToken}&userId={userId}]
-
-+ Parameters
-
-    + accessToken (required, string, `my-wonderfulltoken`) ... `accessToken` of the user which want to login.
-    + userId (required, int, `1`) ... `userId` of the user which want to login.
-
-### Authenticate with socialAPI [GET]
-
-+ This verb is only used by socialAPI. Do not use. Just for internal purpose.
-
-+ Response 200 (application/json)
-
-        {
-            "id": 56,
-            "data" : "{'name':'jean','lastname':'blaguin'}",
-            "service": {
-                "id": 2,
-                "name": "OFC",
-                "version": "1.0",
-                "uniqueDataKeys": ["email"]
-            },
-            "roleList":
-            [
-                "ROLE_USER"
-            ],
-            "token": "3bfb25b7a9c40e895b7121c30fdfbaded84fbf5f12b88788839b4011c8ca3ee189abe5aa4b82d92c",
-            "tokenDate": 1387553949708,
-            "credentialList":
-            [
-                {
-                    "identity" : "identity@mail.com",
-                    "domain" : "internal",
-                    "connected" : true,
-                    "id" : 57,
-                    "userId" : 56,
-                    "password": "",
-                    "accessToken": null
-                }    
-            ]    
-        }
-        
-        
 ## Login [/identity/rest/auth/login]
 
 ### Log to the service [POST]
@@ -271,6 +228,53 @@ Authentication resources
                     "accessToken": null
                 }    
             ]    
+        }
+
+## Social authentication url [/identity/rest/auth/social/url/{domain}/{applicationId}]
+
++ Parameters
+
+    + domain (required, string, `facebook`) ... The social `domain` where user want to authenticate.
+    + applicationId (required, string, `132154312321`) ... The social application which will be used to access the social network.
+
+### Get the social authentication url [GET]
+
++ This verb should be called to retreive the OAuth dance url.
++ Client applications will redirect the user to this url to authenticate on the social network.
++ 'X-SocialAPI-Service-Name' header is mandatory if no 'token' header is sent.
+
++ Request
+
+    + Headers
+    
+            X-SocialAPI-Service-Name: name of the service
+            token: current connected user
+            
++ Response 200 (application/json)
+
+        {
+            "url": "http://oauthdanceurl"
+        }
+
+## Social connection url [/identity/rest/auth/social/connect]
+
+### Get the social authentication url [GET]
+
++ This verb should be called to retreive the OAuth dance url.
++ Client applications will redirect the user to this url to authenticate on the social network.
++ 'X-SocialAPI-Service-Name' header is mandatory if no 'token' header is sent.
+
++ Request
+
+    + Headers
+    
+            X-SocialAPI-Service-Name: name of the service
+            token: current connected user
+            
++ Response 200 (application/json)
+
+        {
+            "url": "http://oauthdanceurl"
         }
         
 # Group User
