@@ -230,13 +230,12 @@ Authentication resources
             ]    
         }
 
-## Social connection url [/identity/rest/auth/social/connect/{domain}/{applicationId}?userId={userId}&token={token}]
+## Social connection url [/identity/rest/auth/social/connect/{domain}/{applicationId}?token={token}]
 
 + Parameters
 
     + domain (required, string, `facebook`) ... The social `domain` where user want to authenticate.
     + applicationId (required, string, `132154312321`) ... The social application which will be used to access the social network.
-    + userId (required, string, `132154312321`) ... The user (identityAPI) identifier.
     + token (required, string, `132154312321`) ... The token of the current connected user.
 
 ### Start OAuth dance [GET]
