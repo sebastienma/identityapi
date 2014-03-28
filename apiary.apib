@@ -251,28 +251,41 @@ Authentication resources
     
             token: the token of currently connected user
             
-+ Response 200 (text/html)
++ Response 302
 
-        <html>
-            <result>xxx is now connected on the 'yyy' social network.</result>
-        </html>
 
-## Social connection url [/identity/rest/auth/social/callback?userId={userId}&token={token}]
+## Social connection url [/identity/rest/auth/social/confirm/{token}]
 
 + Parameters
 
-    + userId (required, string, `132154312321`) ... The user (identityAPI) identifier.
     + token (required, string, `132154312321`) ... The token of the current connected user.
 
 ### Social callback [GET]
 
-+ This verb is only called by socialAPI.
++ This verb is only called by socialAPI. Do not call directly.
 
++ Request (application/json)
+
+    + Body
+    
+            { oauthobject: "" }
+            
 + Response 200 (application/json)
     
         {
             "result": "ok"
         }
+
+
+## Social connection url [/identity/rest/auth/social/oauthcode]
+
+### OAuth end process url [GET]
+
++ This verb will be called at the end of the oauth dance. Do not call directly.
+
++ Response 200 (text/plain)
+    
+        xxx is now connected on the 'yyy' social network.
 
 # Group User
 
