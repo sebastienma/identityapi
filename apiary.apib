@@ -230,20 +230,26 @@ Authentication resources
             ]    
         }
 
-## Social connection url [/identity/rest/auth/social/connect/{domain}/{applicationId}?serviceName={serviceName}]
+## Social connection url [/identity/rest/auth/social/connect/{domain}/{applicationId}]
 
 + Parameters
 
     + domain (required, string, `facebook`) ... The social `domain` where user want to authenticate, must be a value in (FACEBOOK, LINKEDIN, GOOGLE, TWITTER).
     + applicationId (required, string, `132154312321`) ... The social application which will be used to access the social network.
-    + serviceName (required, string, `My service name`) ... The name of the current service.
 
 ### Start OAuth dance [GET]
 
 + This will start the OAuth dance.
 + Client applications will redirect the user to this url to authenticate on the social network.
 + An url parameter "success" is returned at the end of the OAuth dance, it contains true if user is correctly connected.
++ Needs ROLE_USER
 
++ Request
+
+    + Headers
+    
+            token: the token of currently connected user
+            
 + Response 200 (text/html)
 
         <html>
