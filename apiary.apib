@@ -285,10 +285,14 @@ Authentication resources
 ### OAuth end process url [GET]
 
 + This verb will be called at the end of the oauth dance. Do not call directly.
++ If a "returnUrl" parameter is passed to the /identity/rest/auth/social/connect/ verb, a redirect occurs here.
 
 + Response 200 (text/plain)
     
         xxx is now connected on the 'yyy' social network.
+
++ Response 302
+
 
 # Group User
 
