@@ -230,12 +230,13 @@ Authentication resources
             ]    
         }
 
-## Social connection url [/identity/rest/auth/social/connect/{domain}/{applicationId}]
+## Social connection url [/identity/rest/auth/social/connect/{domain}/{applicationId}?returnUrl={returnUrl}]
 
 + Parameters
 
     + domain (required, string, `facebook`) ... The social `domain` where user want to authenticate, must be a value in (FACEBOOK, LINKEDIN, GOOGLE, TWITTER).
     + applicationId (required, string, `132154312321`) ... The social application which will be used to access the social network.
+    + returnUrl (string, `http://www.socialapi.com`) ... An url where return the user after the connection to the social network.
 
 ### Start OAuth dance [GET]
 
@@ -244,6 +245,7 @@ Authentication resources
 + An url parameter "success" is returned at the end of the OAuth dance, it contains true if user is correctly connected.
 + Url parameters returned: displayName, permissions, imageUrl, profileUrl
 + Needs ROLE_USER
++ If returnUrl specified, all parameters are transfered to this url
 
 + Request
 
