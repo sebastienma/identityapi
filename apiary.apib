@@ -242,7 +242,7 @@ Authentication resources
 
 + This will start the OAuth dance.
 + Client applications will redirect the user to this url to authenticate on the social network.
-+ An url parameter "success" is returned at the end of the OAuth dance, it contains true if user is correctly connected.
++ An url parameter "success" is returned at the end of the OAuth dance (verb: /identity/rest/auth/social/oauthcode), it contains true if user is correctly connected.
 + Url parameters returned: displayName, permissions, imageUrl, profileUrl
 + Needs ROLE_USER
 + If returnUrl specified, all parameters are transfered to this url
@@ -286,6 +286,8 @@ Authentication resources
 
 + This verb will be called at the end of the oauth dance. Do not call directly.
 + If a "returnUrl" parameter is passed to the /identity/rest/auth/social/connect/ verb, a redirect occurs here.
++ An url parameter "success" is returned and contains true if user is correctly connected.
++ Other url parameters returned: displayName, permissions, imageUrl, profileUrl.
 
 + Response 200 (text/plain)
     
