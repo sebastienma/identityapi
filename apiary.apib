@@ -36,7 +36,7 @@ Authentication resources
 
         {
             "id": 56,
-            "data" : "{'name':'jean','lastname':'blaguin'}",
+            "data" : {"name":"jean","lastname":"blaguin"},
             "service": {
                 "id": 2,
                 "name": "OFC",
@@ -84,7 +84,7 @@ Authentication resources
     + Body
     
             {
-                "data" : "{'name':'jean','lastname':'blaguin'}", 
+                "data" : {"name":"jean","lastname":"blaguin"}, 
                 "identity" : "identity@mail.com",
                 "password" : "12345678",
                 "role": "ROLE_USER"
@@ -94,7 +94,7 @@ Authentication resources
 
         {
             "id": 56,
-            "data" : "{'name':'jean','lastname':'blaguin'}",
+            "data" : {"name":"jean","lastname":"blaguin"},
             "service": {
                 "id": 2,
                 "name": "OFC",
@@ -142,7 +142,7 @@ Authentication resources
 
         {
             "id": 57,
-            "data" : "{'name':'jean','lastname':'blaguin'}",
+            "data" : {"name":"jean","lastname":"blaguin"},
             "service": {
                 "id": 2,
                 "name": "OFC",
@@ -203,7 +203,7 @@ Authentication resources
 
         {
             "id": 56,
-            "data" : "{'name':'jean','lastname':'blaguin'}",
+            "data" : {"name":"jean","lastname":"blaguin"},
             "service": {
                 "id": 2,
                 "name": "OFC",
@@ -318,7 +318,7 @@ User resources
     + Body
     
             {
-                "data" : "{'name':'jean','lastname':'blaguin'}",
+                "data" : {"name":"jean","lastname":"blaguin"},
                 "identity" : "identity@mail.com",
                 "password" : "12345678"
             }
@@ -327,7 +327,7 @@ User resources
 
         {
             "id": 56,
-            "data" : "{'name':'jean','lastname':'blaguin'}",
+            "data" : {"name":"jean","lastname":"blaguin"},
             "service": {
                 "id": 2,
                 "name": "OFC",
@@ -366,7 +366,7 @@ User resources
 
         {
             "id": 56,
-            "data" : "{'name':'jean','lastname':'blaguin'}",
+            "data" : {"name":"jean","lastname":"blaguin"},
             "service": {
                 "id": 2,
                 "name": "OFC",
@@ -406,14 +406,14 @@ User resources
     
             {
                 "id": "1"
-                "data": "my data"
+                "data": {"name":"jean","lastname":"blaguin"}
             }
             
 + Response 200 (application/json)
 
         {
             id: 1,
-            "data": "my data",
+            "data": {"name":"jean","lastname":"blaguin"},
             roleList:[
                 "ROLE_USER"
             ],
