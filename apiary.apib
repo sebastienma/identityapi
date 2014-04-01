@@ -14,7 +14,7 @@ Authentication resources
 ### Merge account with connected user [POST]
 
 + Merge an existing account (userA) with an another
-+ If account (identity/password) exist (userB), all userA accesses are moved to userB, userA is removed, data field is merge, if conflict (same data key) userA data key will overwrite userB data key.
++ If account (identity/password) exist (userB), all userA accesses are moved to userB, userA is removed. Data field is merge, if conflict (same data key) userA data key will be overwritten by userB data key. If data is passed in request, it will overwrite the merged data.
 + If no account exists with (identity/password), identity/password are merged in userA (except if userA have already an identity/password access).
 + A user could'nt have more than one identity/password access, an error wil occurs if userA have already an identity/password access.
 
