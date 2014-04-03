@@ -137,11 +137,13 @@ Authentication resources
             ]    
         }
 
-## Authentication [/identity/rest/auth/bydeviceid/{deviceId}]
+## Authentication [/identity/rest/auth/bydeviceid/{deviceId}?tokenOnly={tokenOnly}&noData={noData}]
 
 + Parameters
 
     + deviceId (required, string, `my-dummy-id`) ... String `deviceid` of the device which want to login.
+    + tokenOnly (boolean, `token`) ... Boolean if true, this verb will only return "token" and "tokenExpirationDate" fields. False by default.
+    + noData (boolean, `noData`) ... Boolean if true, the data field is not send in response. False by default.
 
 ### Connection with a device identifier [POST]
 
@@ -173,7 +175,7 @@ Authentication resources
                 "ROLE_USER"
             ],
             "token": "838f643b59b2fae6a0b18299a74945c3789fa2eb597c174808656da01863b410571dedd94c155d01",
-            "tokenDate": 1387554190248,
+            "tokenExpirationDate": 1387554190248,
             "credentialList":
             [
                 {
