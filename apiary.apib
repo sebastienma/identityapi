@@ -827,6 +827,38 @@ User resources
                 }
             ]
         }
+       
+## Single User by identity [/identity/rest/user/byidentity/{identity}]
+
++ Parameters
+
+    + identity (required, string, `identity`) ... String `identity` of the user to search.
+
+### Retrieve single user by his identity [GET]
+
++ Needs ROLE_USER
++ Search is strict
+
++ Response 200 (application/json)
+
+        {
+            id: 1,
+            roleList: [
+                "ROLE_USER"
+            ],
+            credentialList: [
+                {
+                    identity: "identity@mail.com",
+                    domain: "internal",
+                    connected: true
+                },
+                {
+                    identity: "mydummyguididentity",
+                    domain: "device",
+                    connected: false
+                }
+            ]
+        }
         
 ## User internal credential [/identity/rest/user/{user_id}/credential/internal]
 
