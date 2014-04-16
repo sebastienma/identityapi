@@ -30,9 +30,34 @@ Authentication resources
     
 ### Merge account with connected user [POST]
 
-+ Merge an existing account (userA) with an another
-+ If account (identity/password) exist (userB):
++ Move the connection from userA (deviceUser) to userB with internal credential
++ If userA have no device credential, an error occurs
++ If data is passed in request data, userB will have this data
++ If userB exists:
++ - token and tokenDate of userA are cleared
++ If userB does not exists:
++ - token and tokenDate of userA are cleared
++ - data of userA are cleared
++ - data are copied to userB
++ - if data is passed in request data, it will be merged with existing userB's data
 
++ Request (application/json)
+
+    + Headers
+    
+            token: tokenid of userA
+            
+    + Body
+    
+            {
+                "identity" : "identity@mail.com",
+                "password" : "12345678",
+                "data" : {
+                    "name":"jean",
+                    "lastname":"blaguin"
+                }
+            }
+            
 + Response 200 (application/json)
 
         {
