@@ -142,6 +142,8 @@ Authentication resources
 + This verb will throw an error if credential already exist.
 + And if there is an error with the syntaxe of the data
 + A mandatory header 'X-SocialAPI-Service-Name' is required
++ Identity must be an email
++ Password must have at least 8 characters
 
 + Request (application/json)
 
@@ -273,6 +275,8 @@ Authentication resources
 + A mandatory header 'X-SocialAPI-Service-Name' is required
 + A Json object must be posted {identity: "", password: ""}
 + The 'identity' is the user internal credential 'identity' field
++ Identity must be an email
++ Password must have at least 8 characters
 
 + Request
 
