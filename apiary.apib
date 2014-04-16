@@ -25,6 +25,47 @@ Aministration verbs
 
 Authentication resources
 
+
+## Authentication [/identity/rest/auth/moveto]
+    
+### Merge account with connected user [POST]
+
++ Merge an existing account (userA) with an another
++ If account (identity/password) exist (userB):
+
++ Response 200 (application/json)
+
+        {
+            "id": 56,
+            "data" : {
+                "name":"jean",
+                "lastname":"blaguin"
+            },
+            "service": {
+                "id": 2,
+                "name": "OFC",
+                "version": "1.0",
+                "uniqueDataKeys": ["email"]
+            },
+            "roleList":
+            [
+                "ROLE_USER"
+            ],
+            "token": "3bfb25b7a9c40e895b7121c30fdfbaded84fbf5f12b88788839b4011c8ca3ee189abe5aa4b82d92c",
+            "tokenDate": 1387553949708,
+            "tokenExpirationDate": 1387554190248,
+            "credentialList":
+            [
+                {
+                    "identity" : "identity@mail.com",
+                    "domain" : "INTERNAL",
+                    "connected" : true,
+                    "password": "",
+                    "accessToken": null
+                }    
+            ]    
+        }
+        
 ## Authentication [/identity/rest/auth/merge]
     
 ### Merge account with connected user [POST]
