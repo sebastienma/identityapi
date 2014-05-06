@@ -40,6 +40,7 @@ Authentication resources
 + - data of userA are cleared
 + - data are copied to userB
 + - if data is passed in request data, it will be merged with existing userB's data
++ All device credentials of the connected user is moved to a new user
 
 + Request (application/json)
 
@@ -90,7 +91,53 @@ Authentication resources
                 }    
             ]    
         }
-        
+
+## Social disconnection [/identity/rest/auth/internal/disconnect]
+
+### Remove internal connection for this user [GET]
+
++ User must at least have one credential after disconnection, otherwise an exception is thrown
++ If user have no internal credential, an exception is thrown
+
++ Request
+
+    + Headers
+    
+            token: the token of currently connected user
+            
++ Response 200 (application/json)
+    
+        {
+            "id": 56,
+            "data" : {
+                "name":"jean",
+                "lastname":"blaguin"
+            },
+            "service": {
+                "id": 2,
+                "name": "OFC",
+                "version": "1.0",
+                "uniqueDataKeys": ["email"]
+            },
+            "roleList":
+            [
+                "ROLE_USER"
+            ],
+            "token": "3bfb25b7a9c40e895b7121c30fdfbaded84fbf5f12b88788839b4011c8ca3ee189abe5aa4b82d92c",
+            "tokenDate": 1387553949708,
+            "tokenExpirationDate": 1387554190248,
+            "credentialList":
+            [
+                {
+                    "identity" : "identity@mail.com",
+                    "domain" : "DEVICE",
+                    "userId" : 56,
+                    "password": "",
+                    "accessToken": "aeeaaezezfs"
+                }    
+            ]    
+        }
+
 ## Authentication [/identity/rest/auth/merge]
     
 ### Merge account with connected user [POST]
@@ -344,12 +391,64 @@ Authentication resources
             ]    
         }
 
-## Social connection url [/identity/rest/auth/social/connect/{domain}/{applicationId}?returnUrl={returnUrl}]
+## Social disconnection [/identity/rest/auth/social/disconnect/{domain}]
+
++ Parameters
+
+    + domain (required, string, `FACEBOOK`) ... The social `domain` to disconnect.
+
+### Remove the social connection for this user [GET]
+
++ User must at least have one credential after disconnection, otherwise an exception is thrown
++ If user have no credential for {domain}, an exception is thrown
++ If user has multiple credential for the same domain, all credentials will be removed
+
++ Request
+
+    + Headers
+    
+            token: the token of currently connected user
+            
++ Response 200 (application/json)
+    
+        {
+            "id": 56,
+            "data" : {
+                "name":"jean",
+                "lastname":"blaguin"
+            },
+            "service": {
+                "id": 2,
+                "name": "OFC",
+                "version": "1.0",
+                "uniqueDataKeys": ["email"]
+            },
+            "roleList":
+            [
+                "ROLE_USER"
+            ],
+            "token": "3bfb25b7a9c40e895b7121c30fdfbaded84fbf5f12b88788839b4011c8ca3ee189abe5aa4b82d92c",
+            "tokenDate": 1387553949708,
+            "tokenExpirationDate": 1387554190248,
+            "credentialList":
+            [
+                {
+                    "identity" : "identity@mail.com",
+                    "domain" : "INTERNAL",
+                    "connected" : true,
+                    "id" : 57,
+                    "userId" : 56,
+                    "password": "",
+                    "accessToken": null
+                }    
+            ]    
+        }
+
+## Social connection url [/identity/rest/auth/social/connect/{domain}?returnUrl={returnUrl}]
 
 + Parameters
 
     + domain (required, string, `facebook`) ... The social `domain` where user want to authenticate, must be a value in (FACEBOOK, LINKEDIN, GOOGLE, TWITTER).
-    + applicationId (required, string, `132154312321`) ... The social application which will be used to access the social network.
     + returnUrl (string, `http://www.socialapi.com`) ... An url where return the user after the connection to the social network.
 
 ### Start OAuth dance [GET]
@@ -360,7 +459,12 @@ Authentication resources
 + Url parameters returned: displayName, permissions, imageUrl, profileUrl
 + Needs ROLE_USER
 + If returnUrl specified, all parameters are transfered to this url
-+ Only FACEBOOK is supported for now
++ Only FACEBOOK and GOOGLE are supported for now
++ Social applications are specified by properties in the identity.properties file, these are :
++ - auth.socialconnect.facebook.appId
++ - auth.socialconnect.google.appId
++ - auth.socialconnect.twitter.appId
++ All device credentials of the connected user is moved to a new user
 
 + Request
 
@@ -482,6 +586,7 @@ User resources
     + Headers
     
             token: the token of currently connected user
+            tokenRefresh: optionnal, if true, token of the currently connected user is refreshed
 
 + Response 200 (application/json)
 
@@ -526,6 +631,7 @@ User resources
     + Headers
     
             token: the token of currently connected user
+            tokenRefresh: optionnal, if true, token of the currently connected user is refreshed
             
     + Body
     
@@ -564,7 +670,7 @@ User resources
                 }
             ]
         }
-        
+
 ## Current user data [/identity/rest/user/data]
 
 ### Retreive user data [GET]
@@ -576,6 +682,7 @@ User resources
     + Headers
     
             token: the token of currently connected user
+            tokenRefresh: optionnal, if true, token of the currently connected user is refreshed
           
 + Response 200 (application/json)
 
@@ -597,6 +704,7 @@ User resources
     + Headers
     
             token: the token of currently connected user
+            tokenRefresh: optionnal, if true, token of the currently connected user is refreshed
 
     + Body
     
@@ -623,6 +731,7 @@ User resources
     + Headers
     
             token: the token of currently connected user
+            tokenRefresh: optionnal, if true, token of the currently connected user is refreshed
           
 + Response 200 (application/json)
 
@@ -638,6 +747,7 @@ User resources
     + Headers
     
             token: the token of currently connected user
+            tokenRefresh: optionnal, if true, token of the currently connected user is refreshed
 
     + Body
 
@@ -660,6 +770,7 @@ User resources
     + Headers
     
             token: the token of currently connected user
+            tokenRefresh: optionnal, if true, token of the currently connected user is refreshed
 
 + Response 200 (application/json)
 
@@ -769,7 +880,123 @@ User resources
             "result" : "User Deleted"
         }
         
+## Current user data [/identity/rest/user/{user_id}/data]
 
++ Parameters
+
+    + user_id (required, number, `1`) ... Number `id` of the user.
+
+### Retreive user data [GET]
+
++ Needs ROLE_ADMIN.
++ Retreive all data of the current connected user as an hashmap.
+
++ Request
+
+    + Headers
+    
+            token: the token of currently connected user
+          
++ Response 200 (application/json)
+
+        {
+            "firstname": "Juan",
+            "lastname": "Maria",
+            "avatar": "http://urltomyavatar.com/image.jpg"
+        }
+        
+### Update user data [PUT]
+
++ Needs ROLE_ADMIN.
++ Update user data.
++ All existing data is kept. New data is merged with existing one, if a conflict occurs (same key) value is overwritten.
++ If user has no data, data is created.
++ Unity constraint is applied on fiedls that registered in the associated service.
+
++ Request (application/json)
+
+    + Headers
+    
+            token: the token of currently connected user
+
+    + Body
+    
+            {
+                "firstname": "Juan"
+            }
+    
++ Response 200 (application/json)
+
+        {
+            "result": "data updated"
+        }
+
+## Data value by key [/identity/rest/user/{user_id}/data/{key}]
+
++ Parameters
+
+    + user_id (required, number, `1`) ... Number `id` of the user.
+
++ Parameters
+
+    + key (required, string, `mykey`) ... `key` of the data to retrieve.
+
+### Retreive data for this key [GET]
+
++ Needs ROLE_ADMIN
+
++ Request
+
+    + Headers
+    
+            token: the token of currently connected user
+          
++ Response 200 (application/json)
+
+        {
+            "value": "Juan"
+        }
+
+
+### Update data for this key [PUT]
+
++ Needs ROLE_ADMIN
+
++ Request
+
+    + Headers
+    
+            token: the token of currently connected user
+
+    + Body
+
+            {
+                "value": "Juan"
+            } 
+
++ Response 200 (application/json)
+
+        {
+            "result": "data updated"
+        } 
+        
+### Remove data for this key [DELETE]
+
++ Needs ROLE_ADMIN
++ Data will be removed for this key.
+
++ Request
+
+    + Headers
+    
+            token: the token of currently connected user
+
++ Response 200 (application/json)
+
+        {
+            "result": "data removed"
+        } 
+        
 ## User List [/identity/rest/user/list?offset=0&count=5]
 
 + Parameters
