@@ -671,6 +671,56 @@ User resources
             ]
         }
 
+## Retreive all users having a specific key/value data [/identity/rest/data]
+
+### Get all users [POST]
+
++ Needs ROLE_ADMIN role.
+
++ Request (application/json)
+
+    + Headers
+    
+            token: the token of currently connected user
+
+    + Body
+    
+            {
+                "key": "idGCM",
+                "value" : "12"
+            }
+
++ Response 200 (application/json)
+
+            [
+                {
+                    "id": 56,
+                    "credentialList":
+                    [
+                        {
+                            "identity" : "identity@mail.com",
+                            "domain" : "internal",
+                            "connected" : true,
+                            "id" : 57,
+                            "userId" : 56,
+                            "password": "",
+                            "accessToken": null
+                        }    
+                    ]
+                },
+                {
+                    "id": 70,
+                    "credentialList":
+                    [
+                        {
+                            "identity" : "jeantomate.3",
+                            "domain" : "FACEBOOK",
+                            "connected" : true
+                        }    
+                    ]
+                }
+            ]
+        
 ## Current user data [/identity/rest/user/data]
 
 ### Retreive user data [GET]
