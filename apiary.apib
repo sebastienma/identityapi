@@ -675,27 +675,22 @@ User resources
 
 ### Get all users [POST]
 
-+ Needs ROLE_ADMIN role.
++ Retreive all data of the current connected user as an hashmap
 
-+ Request (application/json)
++ Request
 
     + Headers
     
             token: the token of currently connected user
-
-    + Body
-    
-            {
-                "key": "idGCM",
-                "value" : "12"
-            }
-
+            tokenRefresh: optionnal, if true, token of the currently connected user is refreshed
+          
 + Response 200 (application/json)
 
-            {
-                "key": "idGCM",
-                "value" : "12"
-            }
+        {
+            "firstname": "Juan",
+            "lastname": "Maria",
+            "avatar": "http://urltomyavatar.com/image.jpg"
+        }
 
 ## Current user data [/identity/rest/user/data]
 
