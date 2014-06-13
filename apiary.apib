@@ -5,6 +5,61 @@ HOST: http://www.google.com
 
 Identity API is a service which manage users and its preferences.
 
+# Group Data
+
+Manage user data
+
+
+## Retreive all users having a specific key-value data [/identity/rest/data]
+
+### Get all users [POST]
+
++ Needs ROLE_ADMIN role.
+
++ Request (application/json)
+
+    + Headers
+    
+            token: the token of currently connected user
+
+    + Body
+    
+            {
+                "key": "idGCM",
+                "value" : "12"
+            }
+
++ Response 200 (application/json)
+
+            [
+                {
+                    "id": 56,
+                    "credentialList":
+                    [
+                        {
+                            "identity" : "identity@mail.com",
+                            "domain" : "internal",
+                            "connected" : true,
+                            "id" : 57,
+                            "userId" : 56,
+                            "password": "",
+                            "accessToken": null
+                        }    
+                    ]
+                },
+                {
+                    "id": 70,
+                    "credentialList":
+                    [
+                        {
+                            "identity" : "jeantomate.3",
+                            "domain" : "FACEBOOK",
+                            "connected" : true
+                        }    
+                    ]
+                }
+            ]
+
 # Group Admin
 
 Aministration verbs
@@ -670,28 +725,7 @@ User resources
                 }
             ]
         }
-
-## Retreive all users having a specific key-value data [/identity/rest/data]
-
-### Get all users [POST]
-
-+ Retreive all data of the current connected user as an hashmap
-
-+ Request
-
-    + Headers
-    
-            token: the token of currently connected user
-            tokenRefresh: optionnal, if true, token of the currently connected user is refreshed
-          
-+ Response 200 (application/json)
-
-        {
-            "firstname": "Juan",
-            "lastname": "Maria",
-            "avatar": "http://urltomyavatar.com/image.jpg"
-        }
-
+        
 ## Current user data [/identity/rest/user/data]
 
 ### Retreive user data [GET]
