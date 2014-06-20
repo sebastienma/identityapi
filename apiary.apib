@@ -1302,7 +1302,7 @@ User resources
 
 ### Update internal credential [PUT]
 
-+ Update the internal credential of this user
++ Update the internal credential of the connected user
 
 + Request (application/json)
 
@@ -1314,22 +1314,16 @@ User resources
             {
                 "identity": "identity@mail.com"
                 "password": "123"
+                "data" : {
+                    "nickname":"jean",
+                    "lastname":"blaguin"
+                }
             }
             
 + Response 200 (application/json)
 
             {
-                id: 1,
-                roleList: [
-                    "ROLE_ADMIN"
-                ],
-                credentialList: [
-                    {
-                        identity: "identity@mail.com",
-                        domain: "internal",
-                        connected: false
-                    }
-                ]
+                "result": "Credential updated"
             }
             
 ## User credential [/identity/rest/user/{user_id}/credential?domain={domain}&identity={identity}]
