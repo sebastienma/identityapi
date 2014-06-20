@@ -1227,7 +1227,7 @@ User resources
                 }
             ]
         }
-        
+
 ## User internal credential [/identity/rest/user/{user_id}/credential/internal]
 
 + Parameters
@@ -1298,7 +1298,40 @@ User resources
                 ]
             }
 
+## User internal credential [/identity/rest/user/credential/internal]
 
+### Update internal credential [PUT]
+
++ Update the internal credential of this user
+
++ Request (application/json)
+
+    + Headers
+    
+            token: the token of currently connected user
+    + Body
+    
+            {
+                "identity": "identity@mail.com"
+                "password": "123"
+            }
+            
++ Response 200 (application/json)
+
+            {
+                id: 1,
+                roleList: [
+                    "ROLE_ADMIN"
+                ],
+                credentialList: [
+                    {
+                        identity: "identity@mail.com",
+                        domain: "internal",
+                        connected: false
+                    }
+                ]
+            }
+            
 ## User credential [/identity/rest/user/{user_id}/credential?domain={domain}&identity={identity}]
 
 + Parameters
