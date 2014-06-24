@@ -1112,11 +1112,12 @@ User resources
         }
 
 
-## User List [/identity/rest/user/resetPassword/{identity}]
+## User List [/identity/rest/user/resetPassword/{identity}?clientType={clientType}]
 
 + Parameters
 
     + identity (required, string, `identity@mail.com`) ... Identity who wants reset his password (for INTERNAL credential)
+    + clientType (optional, string `meditel`) ... Client type. Used to send different email depending on the client type.
 
 ### Reset password [GET]
 
@@ -1128,6 +1129,7 @@ User resources
     + Headers
     
             X-SocialAPI-Service-Name: name of the service
+            Accept-Language: Locale to use for the sent email
 
 
 + Response 200 (application/json)
