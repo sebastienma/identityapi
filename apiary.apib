@@ -81,8 +81,12 @@ Aministration verbs
 Authentication resources
 
 
-## Authentication [/identity/rest/auth/internal/connect]
+## Authentication [/identity/rest/auth/internal/connect?createUser={createUser}]
 
++ Parameters
+
+    + createUser (optional, boolean, `true`) ... Boolean `createUser` if true, a user with identity/password credential is created. Default is false. If true and user already exists an error is thrown. If false and user doesn't exists, an error is thrown.
+    
 ### Connect with an internal account [POST]
 
 + Move the connection from userA (deviceUser) to userB with internal credential
