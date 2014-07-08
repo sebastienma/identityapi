@@ -503,12 +503,13 @@ Authentication resources
             ]    
         }
 
-## Social connection url [/identity/rest/auth/social/connect/{domain}?returnUrl={returnUrl}]
+## Social connection url [/identity/rest/auth/social/connect/{domain}?returnUrl={returnUrl}&clientType={clientType}]
 
 + Parameters
 
     + domain (required, string, `facebook`) ... The social `domain` where user want to authenticate, must be a value in (FACEBOOK, LINKEDIN, GOOGLE, TWITTER).
     + returnUrl (string, `http://www.socialapi.com`) ... An url where return the user after the connection to the social network.
+    + clientType (string, optional, `meditel`) ... This choose the right social application for authentication.
 
 ### Start OAuth dance [GET]
 
@@ -519,10 +520,6 @@ Authentication resources
 + Needs ROLE_USER
 + If returnUrl specified, all parameters are transfered to this url
 + Only FACEBOOK and GOOGLE are supported for now
-+ Social applications are specified by properties in the identity.properties file, these are :
-+ - auth.socialconnect.facebook.appId
-+ - auth.socialconnect.google.appId
-+ - auth.socialconnect.twitter.appId
 + All device credentials of the connected user is moved to a new user
 
 + Request
