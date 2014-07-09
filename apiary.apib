@@ -85,7 +85,7 @@ Authentication resources
 
 + Parameters
 
-    + createUser (optional, boolean, `true`) ... Boolean `createUser` if true, a user with identity/password credential is created. Default is false. If true and user already exists an error is thrown. If false and user doesn't exists, an error is thrown.
+    + createUser (boolean, `true`) ... Optional. Boolean `createUser` if true, a user with identity/password credential is created. Default is false. If true and user already exists an error is thrown. If false and user doesn't exists, an error is thrown.
     
 ### Connect with an internal account [POST]
 
@@ -509,7 +509,7 @@ Authentication resources
 
     + domain (required, string, `facebook`) ... The social `domain` where user want to authenticate, must be a value in (FACEBOOK, LINKEDIN, GOOGLE, TWITTER).
     + returnUrl (string, `http://www.socialapi.com`) ... An url where return the user after the connection to the social network.
-    + clientType (string, optional, `meditel`) ... This choose the right social application for authentication.
+    + clientType (string, `meditel`) ... This choose the right social application for authentication.
 
 ### Start OAuth dance [GET]
 
@@ -1117,7 +1117,7 @@ User resources
 
 + Parameters
 
-    + clientType (optional, string, `meditel`) ... Client type (ofc, ofc_fr and meditel). Used to send different email depending on the client type.
+    + clientType (string, `meditel`) ... Optional, client type (ofc, ofc_fr and meditel). Used to send different email depending on the client type.
     + identity (required, string, `identity@mail.com`) ... Identity who wants reset his password (for INTERNAL credential)
 
 ### Reset password [GET]
