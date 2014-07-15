@@ -511,25 +511,34 @@ Authentication resources
     + returnUrl (string, `http://www.socialapi.com`) ... An url where return the user after the connection to the social network.
     + clientType (string, `meditel`) ... This choose the right social application for authentication.
 
-### Start OAuth dance [GET]
+### Connection with facebook [GET]
 
-+ This will start the OAuth dance.
-+ Client applications will redirect the user to this url to authenticate on the social network.
-+ An url parameter "success" is returned at the end of the OAuth dance (verb: /identity/rest/auth/social/oauthcode), it contains true if user is correctly connected.
-+ Url parameters returned: displayName, permissions, imageUrl, profileUrl
 + Needs ROLE_USER
-+ If returnUrl specified, all parameters are transfered to this url
-+ Only FACEBOOK and GOOGLE are supported for now
++ FACEBOOK, TWITTER and GOOGLE are supported
 + All device credentials of the connected user is moved to a new user
++ If "X-SocialAPI-Social-Token" header is set, oauth dance does not start. After a token verification, a direct connection is made.
++ If not "X-SocialAPI-Social-Token" header is provided, this will start the OAuth dance.
++ When oAuthDance is started:
++ + Client applications will redirect the user to this url to authenticate on the social network.
++ + An url parameter "success" is returned at the end of the OAuth dance (verb: /identity/rest/auth/social/oauthcode), it contains true if user is correctly connected.
++ + Url parameters returned: displayName, permissions, imageUrl, profileUrl
++ + If returnUrl specified, all parameters are transfered to this url
 
 + Request
 
     + Headers
     
             token: the token of currently connected user
+            X-SocialAPI-Social-Token: optional. If accessToken from social network ihas been already retrieved, oauth dance does not start. After a token verfication, a direct connection is made.
             
 + Response 302
 
++ Response 200 (application/json)
+
+        {
+            "mergeCode": "",
+            "userId": ""
+        }
 
 ## Social connection url [/identity/rest/auth/social/confirm/{token}]
 
