@@ -529,15 +529,15 @@ Authentication resources
     + Headers
     
             token: the token of currently connected user
-            X-SocialAPI-Social-Token: optional. If accessToken from social network ihas been already retrieved, oauth dance does not start. After a token verfication, a direct connection is made.
+            X-SocialAPI-Social-Token: optional. If accessToken from social network has been already retrieved with specific SDK, oauth dance does not start. After a token verfication, a direct connection is made with this account.
             
 + Response 302
 
 + Response 200 (application/json)
 
         {
-            "mergeCode": "",
-            "userId": ""
+            "mergeCode": "CREDENTIAL_ADDED",
+            "userId": "1125"
         }
 
 ## Social connection url [/identity/rest/auth/social/confirm/{token}]
